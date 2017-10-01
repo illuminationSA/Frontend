@@ -1,0 +1,12 @@
+<md-toolbar color="primary">
+  <span>Illumination</span>
+  <span class="spacer"></span>
+  <button md-button [mdMenuTriggerFor]="appMenu">
+    <md-icon ng-bind="menu"></md-icon>
+  </button>
+</md-toolbar>
+
+<md-menu #appMenu="mdMenu">
+  <button md-menu-item> Settings </button>
+  <button md-menu-item> Help </button>
+</md-menu>
