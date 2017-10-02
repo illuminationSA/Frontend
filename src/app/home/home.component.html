@@ -1,8 +1,9 @@
+<!--
 <md-toolbar color="primary">
   <span>Illumination</span>
   <span class="spacer"></span>
-  <button md-button [mdMenuTriggerFor]="appMenu">
-    <md-icon ng-bind="menu"></md-icon>
+  <button md-icon-button [mdMenuTriggerFor]="appMenu">
+    <md-icon>home</md-icon>
   </button>
 </md-toolbar>
 
@@ -10,3 +11,108 @@
   <button md-menu-item> Settings </button>
   <button md-menu-item> Help </button>
 </md-menu>
+
+<form class="example-form">
+  <md-form-field>
+    <input mdInput placeholder="Favorite food" value="Sushi">
+  </md-form-field>
+</form>
+-->
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Lights</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+</div>
+
+
+<div class="container">
+
+  <div class="col-sm-6">
+    <h1>Lights</h1>
+    <p>
+      This project was developed for the course  <a href="https://sites.google.com/unal.edu.co/softwarearchitecture2017ii">Software Architecture</a> by students of computing science and engineering, all source code is available on the following github organization <a href="https://github.com/illuminationSA">Illumination.</a>
+    </p>
+  </div>
+
+  <div class="col-sm-6">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#sign-in" data-toggle="tab" aria-expanded="true">Sign in</a></li>
+      <li class=""><a href="#sign-up" data-toggle="tab" aria-expanded="false">Sign up</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade active in" id="sign-in">
+        <div class="form-group">
+          <label for="inputEmail" class="col-sm-10 control-label">Email</label>
+          <div class="col-sm-12">
+            <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputPassword" class="col-sm-10 control-label">Password</label>
+          <div class="col-sm-12">
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+          </div>
+        </div>
+        <div></div>
+        <div class="form-group">
+          <div class="col-sm-12 col-sm-offset-4">
+            <button type="submit" class="btn btn-default">Log in</button>
+          </div>
+        </div>        
+      </div>
+
+      <div class="tab-pane fade" id="sign-up">
+        <div class="form-group">
+          <label for="inputName" class="col-sm-10 control-label">Name</label>
+          <div class="col-sm-12">
+            <input type="text" class="form-control" id="inputName" placeholder="Name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputLastname" class="col-sm-10 control-label">Lastname</label>
+          <div class="col-sm-12">
+            <input type="text" class="form-control" id="inputLastname" placeholder="Lastname">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputEmail" class="col-sm-10 control-label">Email</label>
+          <div class="col-sm-12">
+            <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputEmail" class="col-sm-10 control-label">Confirm Email</label>
+          <div class="col-sm-12">
+            <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputPassword" class="col-sm-10 control-label">Password</label>
+          <div class="col-sm-12">
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputPassword" class="col-sm-10 control-label">Confirm Password</label>
+          <div class="col-sm-12">
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+          </div>
+        </div>
+        <div></div>
+        <div class="form-group">
+          <div class="col-sm-12 col-sm-offset-4">
+            <button type="submit" class="btn btn-default">Register</button>
+          </div>
+        </div>  
+      </div>
+    </div>
+
+
+    
+
+  </div>
+  
+</div>
