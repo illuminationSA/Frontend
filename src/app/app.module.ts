@@ -9,12 +9,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { PlacesComponent } from './places/places.component';
-import { MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule, MatTabsModule } from '@angular/material';
+import { MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule, MatTabsModule, MatIconModule } from '@angular/material';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
     PlacesComponent,
     HeaderComponent
   ],
@@ -27,9 +27,9 @@ import { MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModu
     MdCardModule,
     MdMenuModule,
     MdToolbarModule,
-    MatIconModule
-    MatTabsModule
-    MdIconModule,
+    MatIconModule,
+    MatTabsModule,
+    MdIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
