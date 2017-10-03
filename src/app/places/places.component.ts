@@ -17,12 +17,12 @@ export class PlacesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getPlacesData( 1 );
   }
 
   getPlacesData( user_id ){
     this.placesService.getPlaces(user_id).subscribe(
     ( lawea => this.places = lawea ));
-    // res => { console.log( res ) })
   }
 
 }
