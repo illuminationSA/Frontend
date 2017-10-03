@@ -21,11 +21,8 @@ export class PlacesService {
       })
   }
 
-  // getPlaces(user_id){
-  //   let body = { user: user_id }
-  //   let headers = new Headers({ 'Content-Type': 'application/json' });
-  //   let options = new RequestOptions({ headers: headers });
-  //
-  // }
-
+  getPlaces(user_id){
+    return this.http.get('http://localhost:3000/users/'+user_id+'/places')
+    .map((response: Response) => response.json());
+  }
 }
