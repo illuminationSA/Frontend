@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { PlacesComponent } from './places/places.component';
 import { MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule, MatTabsModule, MatIconModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
+import { RegisterService } from './services/register.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,9 @@ import { AppRoutingModule } from './app-routing.module';
     MdIconModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    RegisterService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
