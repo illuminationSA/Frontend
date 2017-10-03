@@ -30,9 +30,7 @@ export class RegisterService {
     let options = new RequestOptions({ headers: headers });
 
     return this.http.post('http://localhost:3000/login.json', body, options)
-    .map((response: Response ) => {console.log(response.json());
-    response.json();
-    })
+    .map((response: Response ) => response.json());
   }
 
 }

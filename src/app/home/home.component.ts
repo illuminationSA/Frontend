@@ -11,6 +11,7 @@ import { AppRoutingModule } from '../app-routing.module';
 export class HomeComponent implements OnInit {
 
   user: Object;
+  login: Object;
 
   constructor(
     private registerService: RegisterService,
@@ -25,7 +26,7 @@ export class HomeComponent implements OnInit {
   }
 
   sendLoginData( email, password ){
-    this.registerService.postLogin( email, password ).subscribe(res => {console.log(res)})
+    this.registerService.postLogin( email, password ).subscribe(resLoginData => this.login = resLoginData)
   }
 
   sendUserData() {
