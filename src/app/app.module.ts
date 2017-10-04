@@ -41,6 +41,7 @@ import { PlacesService } from './services/places.service';
   ],
   providers: [
     RegisterService,
+    PlacesService,
     HomeComponent
   ],
   bootstrap: [AppComponent]
