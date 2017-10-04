@@ -11,7 +11,7 @@ import { AppRoutingModule } from '../app-routing.module';
 export class HomeComponent implements OnInit {
 
   user: Object;
-  login: Object;
+  public login: Object;
 
   constructor(
     private registerService: RegisterService,
@@ -19,6 +19,10 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+  }
+
+  getLogin(){
+    return this.login;
   }
 
   sendData( name, email, password ){
