@@ -20,8 +20,19 @@
               </span>
             </span>
           </a>
-          <div id="co{{pl.id}}" class="collapse" style="border-style:solid; border-width:0.5px 0.5px 0.5px 0.5px; border-color: rgb(203,203,203); padding: 10px 10px 10px 10px ">
-            Bitch ass nigga
+          <div id="co{{pl.id}}" class="collapse" style="border-style:solid; border-width:0.5px 0.5px 0.5px 0.5px; border-color: rgb(203,203,203); padding: 10px 20px 10px 20px ">
+            <form>
+              <div class="form-group-row">
+                <label for="PlaceName" class="col-md-2 col-form-name"> Name </label>
+                <div class="col-md-10">
+                  <input type="text" class="form-control" #placeN id="PlaceName{{pl.id}}" placeholder="{{pl.name}}" #newName>
+                </div>
+              </div>
+
+              <div class="form-group-row col-md-4 col-sm-offset-4">
+                <button (click)="updatePlacesData( placeN.value, pl.id, currentUser ); getPlacesData( currentUser );" type="submit" class="btn btn-primary btn-sm" style="border-radius: 5px; text-size:" >Edit</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
