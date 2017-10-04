@@ -19,4 +19,18 @@ export class RegisterService {
     })
   }
 
+  getUsers(){
+    return this.http.get('http://localhost:3000/users/1')
+    .map((response:Response) => response.json());
+  }
+
+  postLogin(email, password){
+    let body = {email: email, password: password }
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post('http://localhost:3000/login.json', body, options)
+    .map((response: Response ) => response.json());
+  }
+
 }

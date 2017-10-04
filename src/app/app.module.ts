@@ -39,7 +39,8 @@ import { ConsumptionComponent } from './consumption/consumption.component';
     ChartsModule
   ],
   providers: [
-    RegisterService
+    RegisterService,
+    HomeComponent
   ],
   bootstrap: [AppComponent]
 })
