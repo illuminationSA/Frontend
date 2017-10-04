@@ -21,8 +21,13 @@ export class PlacesService {
       })
   }
 
-  getPlaces(user_id){
+  getPlaces( user_id ){
     return this.http.get('http://localhost:3000/users/'+user_id+'/places')
+    .map((response: Response) => response.json());
+  }
+
+  getLights( place_id ){
+    return this.http.get('http://localhost:3000/places/'+place_id+'/lights')
     .map((response: Response) => response.json());
   }
 }

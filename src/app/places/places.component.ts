@@ -10,6 +10,7 @@ import { Http, Request, Headers, RequestOptions, RequestMethod } from '@angular/
 export class PlacesComponent implements OnInit {
 
   places = [];
+  lights = [];
 
   constructor(
     private placesService: PlacesService,
@@ -23,6 +24,11 @@ export class PlacesComponent implements OnInit {
   getPlacesData( user_id ){
     this.placesService.getPlaces(user_id).subscribe(
     ( lawea => this.places = lawea ));
+  }
+
+  getLightsData( place_id ){
+    this.placesService.getLights(place_id).subscribe(
+      ( lgh => this.lights= lgh ));
   }
 
 }
