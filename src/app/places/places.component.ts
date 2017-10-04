@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PlacesService } from '../services/places.service';
 import { Http, Request, Headers, RequestOptions, RequestMethod } from '@angular/http';
 import { HomeComponent } from '../home/home.component';
+import { LocalStorageService } from 'angular-2-local-storage';
 
 @Component({
   selector: 'app-places',
@@ -12,13 +13,19 @@ export class PlacesComponent implements OnInit {
 
   places = [];
   lights = [];
+  currentUser: Object;
 
   constructor(
     private placesService: PlacesService,
+    private localStorageService: LocalStorageService,
     private http: Http
   ) { }
   ngOnInit() {
-    this.getPlacesData( 1 );
+    //console.log(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUser = localStorage.getItem('currentUser');
+    console.log("hey");
+    console.log(this.currentUser);
+    this.getPlacesData( this.currentUser );
   }
 
   getPlacesData( user_id ){

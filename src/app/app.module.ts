@@ -15,6 +15,7 @@ import { RegisterService } from './services/register.service';
 import { ChartsModule } from 'ng2-charts';
 import { ConsumptionComponent } from './consumption/consumption.component';
 import { PlacesService } from './services/places.service';
+import { LocalStorageModule } from 'angular-2-local-storage';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,11 @@ import { PlacesService } from './services/places.service';
     MatTabsModule,
     MdIconModule,
     AppRoutingModule,
-    ChartsModule
+    ChartsModule,
+    LocalStorageModule.withConfig({
+            prefix: 'my-app',
+            storageType: 'localStorage'
+        })
   ],
   providers: [
     RegisterService,
