@@ -13,6 +13,7 @@ import { MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModu
 import { AppRoutingModule } from './app-routing.module';
 import { ChartsModule } from 'ng2-charts';
 import { ConsumptionComponent } from './consumption/consumption.component';
+import { PlacesService } from './services/places.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { ConsumptionComponent } from './consumption/consumption.component';
     AppRoutingModule,
     ChartsModule
   ],
-  providers: [],
+  providers: [PlacesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

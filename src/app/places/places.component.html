@@ -1,13 +1,28 @@
 <app-header> </app-header>
 <div class="container">
   <div class="row">
-    <div class="col-3">
+    <div class="col-5">
       <h3>Places</h3>
       <div class="list-group" id="list-tab" role="tablist">
+        <a class="list-group-item list-group-item-action" *ngFor="let pl of places" id="{{pl.id}}{{pl.name}}" data-toggle="list" href="#list-home" role="tab" aria-controls="home" (click)="getLightsData(pl.id)">
+          {{ pl.name }}
+          <span class="pull-right">
+              <span class="btn btn-xs btn-default" onclick="alert('prra malparida');">
+                  <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+              </span>
+              <span class="pull-right">
+                  <span class="btn btn-xs btn-default" onclick="alert('lok hpta');">
+                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                  </span>
+              </span>
+          </span>
+        </a>
+      </div>
+      <!-- <div class="list-group" id="list-tab" role="tablist">
         <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-homee" role="tab" aria-controls="home">
           Living Room
           <span class="pull-right">
-              <span class="btn btn-xs btn-default" onclick="alert('Action1 -> Play');">
+              <span class="btn btn-xs btn-default" (click)="getPlacesData(1)">
                   <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
               </span>
               <span class="pull-right">
@@ -58,18 +73,32 @@
             </span>
           </span>
         </a>
-      </div>
+      </div> -->
     </div>
-    <div class="col-9">
+    <div class="col-7">
       <h3>Lights</h3>
       <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="list-homee" role="tabpanel" aria-labelledby="list-home-list">
-
           <div class="container">
             <div class="row">
-              <div class="col-3">
+              <div class="col-4">
                 <div class="list-group" id="list-tab" role="tablist">
-                  <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">
+                  <!-- Creación dinámica de botones de lights -->
+                  <a class="list-group-item list-group-item-action" *ngFor="let li of lights" id="{{li.id}}{{li.name}}" data-toggle="list" href="#list-home" role="tab" aria-controls="home">
+                    {{ li.name }}
+                    <span class="pull-right">
+                        <span class="btn btn-xs btn-default" onclick="alert('prra malparida');">
+                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                        </span>
+                        <span class="pull-right">
+                            <span class="btn btn-xs btn-default" onclick="alert('lok hpta');">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </span>
+                        </span>
+                    </span>
+                  </a>
+
+                  <!-- <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">
                     Light 01
                     <span class="pull-right">
                       <span class="btn btn-xs btn-default" onclick="alert('Action1 -> Play');">
@@ -108,12 +137,14 @@
                             </span>
                         </span>
                     </span>
-                  </a>
+                  </a> -->
                 </div>
+
+
               </div>
-              <div class="col-9">
+              <div class="col-8">
                 <div class="tab-content" id="nav-tabContent">
-                  <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                  <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">Uno
                     <span class="pull-left">
                       <label class="switch">
                         <input type="checkbox">
@@ -121,7 +152,7 @@
                       </label>
                     </span>
                   </div>
-                  <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">Cupidatat quis ad sint excepteur laborum in esse qui. Et excepteur consectetur ex nisi eu do cillum ad laborum. Mollit et eu officia dolore sunt Lorem culpa qui commodo velit ex amet id ex. Officia anim incididunt laboris deserunt anim aute dolor incididunt veniam aute dolore do exercitation. Dolor nisi culpa ex ad irure in elit eu dolore. Ad laboris ipsum reprehenderit irure non commodo enim culpa commodo veniam incididunt veniam ad.
+                  <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">Dos
                     <span class="pull-left">
                       <label class="switch">
                         <input type="checkbox">
@@ -129,7 +160,7 @@
                       </label>
                     </span>
                   </div>
-                  <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">Ut ut do pariatur aliquip aliqua aliquip exercitation do nostrud commodo reprehenderit aute ipsum voluptate. Irure Lorem et laboris nostrud amet cupidatat cupidatat anim do ut velit mollit consequat enim tempor. Consectetur est minim nostrud nostrud consectetur irure labore voluptate irure. Ipsum id Lorem sit sint voluptate est pariatur eu ad cupidatat et deserunt culpa sit eiusmod deserunt. Consectetur et fugiat anim do eiusmod aliquip nulla laborum elit adipisicing pariatur cillum.
+                  <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">Tres
                     <span class="pull-left">
                       <label class="switch">
                         <input type="checkbox">
@@ -143,37 +174,10 @@
 
 
         </div>
-        <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">Cupidatat quis ad sint excepteur laborum in esse qui. Et excepteur consectetur ex nisi eu do cillum ad laborum. Mollit et eu officia dolore sunt Lorem culpa qui commodo velit ex amet id ex. Officia anim incididunt laboris deserunt anim aute dolor incididunt veniam aute dolore do exercitation. Dolor nisi culpa ex ad irure in elit eu dolore. Ad laboris ipsum reprehenderit irure non commodo enim culpa commodo veniam incididunt veniam ad.</div>
-        <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">Ut ut do pariatur aliquip aliqua aliquip exercitation do nostrud commodo reprehenderit aute ipsum voluptate. Irure Lorem et laboris nostrud amet cupidatat cupidatat anim do ut velit mollit consequat enim tempor. Consectetur est minim nostrud nostrud consectetur irure labore voluptate irure. Ipsum id Lorem sit sint voluptate est pariatur eu ad cupidatat et deserunt culpa sit eiusmod deserunt. Consectetur et fugiat anim do eiusmod aliquip nulla laborum elit adipisicing pariatur cillum.
-        </div>
-        <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">Irure enim occaecat labore sit qui aliquip reprehenderit amet velit. Deserunt ullamco ex elit nostrud ut dolore nisi officia magna sit occaecat laboris sunt dolor. Nisi eu minim cillum occaecat aute est cupidatat aliqua labore aute occaecat ea aliquip sunt amet. Aute mollit dolor ut exercitation irure commodo non amet consectetur quis amet culpa. Quis ullamco nisi amet qui aute irure eu. Magna labore dolor quis ex labore id nostrud deserunt dolor eiusmod eu pariatur culpa mollit in irure.</div>
       </div>
     </div>
   </div>
-</div>
+  <div class="col-6"> <pre> {{ places | json }} </pre> </div>
+  <div class="col-6"> <pre> {{ lights | json }} </pre> </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <h3>Actions</h3>
-            <div class="list-group" id="list-tab" role="tablist">
-                <a class="list-group-item clearfix" onclick="alert('Action1 -> Details');">
-                    Action1
-
-                </a>
-                <a class="list-group-item clearfix" onclick="alert('Action2 -> Details');">
-                    Action2
-                    <span class="pull-right">
-                        <span class="btn btn-xs btn-default" onclick="alert('Action2 -> Play'); event.stopPropagation();">
-                            <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
-                        </span>
-                    </span>
-                </a>
-            </div>
-        </div>
-
-        <div class="col-md-8">
-            <h3>Settings</h3>
-        </div>
-    </div>
 </div>
