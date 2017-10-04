@@ -39,7 +39,7 @@
         <div></div>
         <div class="form-group">
           <div class="col-sm-12 col-sm-offset-4">
-            <a (click)="sendLoginData(lemail.value, lpassword.value);" href="/places"  type="submit" class="btn btn-default">Log in</a>
+            <a (click)="sendLoginData(lemail.value, lpassword.value);" type="submit" class="btn btn-default">Log in</a>
             <button (click)="sendUserData(); saveToLocalStorage(login.token, login.id)"  type="submit" class="btn btn-default">get user</button>
             <pre>{{login | json}}</pre>
           </div>
