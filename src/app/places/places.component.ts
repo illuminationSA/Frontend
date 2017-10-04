@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PlacesService } from '../services/places.service';
 import { Http, Request, Headers, RequestOptions, RequestMethod } from '@angular/http';
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-places',
@@ -16,7 +17,6 @@ export class PlacesComponent implements OnInit {
     private placesService: PlacesService,
     private http: Http
   ) { }
-
   ngOnInit() {
     this.getPlacesData( 1 );
   }

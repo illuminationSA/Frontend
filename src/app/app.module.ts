@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { PlacesComponent } from './places/places.component';
 import { MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule, MatTabsModule, MatIconModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
+import { RegisterService } from './services/register.service';
 import { ChartsModule } from 'ng2-charts';
 import { ConsumptionComponent } from './consumption/consumption.component';
 import { PlacesService } from './services/places.service';
@@ -38,7 +39,10 @@ import { PlacesService } from './services/places.service';
     AppRoutingModule,
     ChartsModule
   ],
-  providers: [PlacesService],
+  providers: [
+    RegisterService,
+    HomeComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
