@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../services/register.service';
 import { Http, Request, RequestMethod, Headers, RequestOptions } from '@angular/http';
 import { AppRoutingModule } from '../app-routing.module';
-import { LocalStorageService } from 'angular-2-local-storage';
 
 @Component({
   selector: 'app-home',
@@ -16,31 +15,11 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private registerService: RegisterService,
-    private localStorageService: LocalStorageService,
     private http: Http
   ) { }
 
   ngOnInit() {
-    localStorage.clear();
   }
-
-  //IMPORTANTE!!
-  //guardar en local storage
-  //localStorage.setItem(itemName, JSON.stringify(itemData));
-  //localStorage.setItem('currentUser', JSON.stringify({ token: token, name: name }));
-  //obtener del local storage
-  //user = JSON.parse(localStorage.getItem(currentUser));
-
-  bruh( token ){
-    console.log(token);
-  }
-
-  saveToLocalStorage(token, id){
-    localStorage.setItem('currentUser', id);
-    console.log(localStorage.getItem('currentUser'));
-  }
-
-  //getFromLocalStorage()
 
   getLogin(){
     return this.login;
