@@ -6,19 +6,24 @@
       <h3>Places</h3>
       <div class="list-group" id="list-tab" role="tablist">
         <!-- Creación dinámica de botones de places -->
-        <a class="list-group-item list-group-item-action" *ngFor="let pl of places" id="{{pl.id}}{{pl.name}}" data-toggle="list" href="#list-home" role="tab" aria-controls="home" (click)="getLightsData(pl.id)">
-          {{ pl.name }}
-          <span class="pull-right">
-            <span class="btn btn-xs btn-default" onclick="alert('prra malparida');">
-              <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-            </span>
+        <div *ngFor="let pl of places">
+          <a class="list-group-item list-group-item-action" id="{{pl.id}}{{pl.name}}" data-toggle="list" href="#list-home" role="tab" aria-controls="home" (click)="getLightsData(pl.id)">
+            {{pl.name}}
             <span class="pull-right">
-              <span class="btn btn-xs btn-default" onclick="alert('lok hpta');">
-                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+              <a class="btn btn-xs btn-default" data-toggle="collapse" [attr.data-target]="'#co' + pl.id" data-parent="#list-tab">
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+              </a>
+              <span class="pull-right">
+                <span class="btn btn-xs btn-default" onclick="alert('lok hpta');">
+                  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </span>
               </span>
             </span>
-          </span>
-        </a>
+          </a>
+          <div id="co{{pl.id}}" class="collapse" style="border-style:solid; border-width:0.5px 0.5px 0.5px 0.5px; border-color: rgb(203,203,203); padding: 10px 10px 10px 10px ">
+            Bitch ass nigga
+          </div>
+        </div>
       </div>
     </div>
     <div class="col-7">
@@ -45,33 +50,7 @@
                   </a>
                 </div>
               </div>
-              <div class="col-8">
-                <div class="tab-content" id="nav-tabContent">
-                  <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">Uno
-                    <span class="pull-left">
-                      <label class="switch">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                      </label>
-                    </span>
-                  </div>
-                  <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">Dos
-                    <span class="pull-left">
-                      <label class="switch">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                      </label>
-                    </span>
-                  </div>
-                  <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">Tres
-                    <span class="pull-left">
-                      <label class="switch">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                      </label>
-                    </span>
-                  </div>
-                </div>
+              <div class="col-3">
               </div>
             </div>
           </div>
