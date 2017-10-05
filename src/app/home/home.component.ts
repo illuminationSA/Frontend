@@ -44,8 +44,7 @@ export class HomeComponent implements OnInit {
   }
 
   sendData( name, email, email2, password, password2, signUpForm ){
-    console.log('LALAL',email, email2);
-    if ( email != '' && password != '' && email === email2 && password === password2) {
+    if ( name != '' && email != '' && password != '' && email === email2 && password === password2) {
 
         this.registerService
         .submitData( name, email, password )
@@ -56,9 +55,11 @@ export class HomeComponent implements OnInit {
             alert(err._body); //JSON
           }
       )
-
-
     }
+    else {
+      alert("Be sure to have written your name\nCheck your Email and Password confirmations")
+    }
+
 
   }
 
