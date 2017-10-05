@@ -16,6 +16,7 @@ export class PlacesComponent implements OnInit {
   lights = [];
   lightlogs = [];
   currentUser: Object;
+  currentPlace: number;
   count = 0;
   state: boolean;
   consumption: string;
@@ -43,7 +44,9 @@ export class PlacesComponent implements OnInit {
 
   getLightsData( place_id ){
     this.placesService.getLights(place_id).subscribe(
-      ( lgh => this.lights= lgh ));
+      ( lgh => this.lights = lgh ));
+    this.currentPlace = place_id;
+    console.log( "Current Pleis:" + this.currentPlace );
   }
 
   updatePlacesData( place_name, place_id ){
@@ -51,9 +54,19 @@ export class PlacesComponent implements OnInit {
       res => this.getPlacesData( this.currentUser ) )
   }
 
+  updateLightsData( light_name, light_id ){
+    this.placesService.updateLights( light_name, light_id ).subscribe(
+      res => this.getLightsData( this.currentPlace ) )
+  }
+
   deletePlaceCom( place_id ){
     this.placesService.deletePlace( place_id ).subscribe(
       res => this.getPlacesData( this.currentUser ) )
+  }
+
+  deleteLightCom( light_id ){
+    this.placesService.deleteLight( light_id ).subscribe(
+      res => this.getLightsData( this.currentPlace ) )
   }
 
   createPlace( place_name ){
@@ -61,12 +74,17 @@ export class PlacesComponent implements OnInit {
       res => this.getPlacesData( this.currentUser ) )
   }
 
+  createLight( light_name ){
+    this.placesService.newLight( light_name, this.currentPlace ).subscribe(
+      res => this.getLightsData( this.currentPlace ) )
+  }
 
   getLightLogs(id) {
     this.registerService
     .getLightLogs(id)
     .subscribe((reslightlogs => this.showLightLog(reslightlogs)))
   }
+
   showLightLog(reslightlogs){
     this.count = 0;
     this.lightlogs = reslightlogs;
