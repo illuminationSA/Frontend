@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PlacesService } from '../services/places.service';
+import { RegisterService } from '../services/register.service';
 import { Http, Request, Headers, RequestOptions, RequestMethod } from '@angular/http';
 import { HomeComponent } from '../home/home.component';
 import { LocalStorageService } from 'angular-2-local-storage';
@@ -13,11 +14,16 @@ export class PlacesComponent implements OnInit {
 
   places = [];
   lights = [];
+  lightlogs = [];
   currentUser: Object;
+  count = 0;
+  state: boolean;
+  consumption: string;
 
   constructor(
     private placesService: PlacesService,
     private localStorageService: LocalStorageService,
+    private registerService: RegisterService,
     private http: Http
   ) { }
 
@@ -27,6 +33,7 @@ export class PlacesComponent implements OnInit {
     console.log("hey");
     console.log(this.currentUser);
     this.getPlacesData( this.currentUser );
+    //this.getLightLogs(this.currentUser);
   }
 
   getPlacesData( user_id ){
@@ -53,4 +60,25 @@ export class PlacesComponent implements OnInit {
     this.placesService.newPlace( place_name, this.currentUser ).subscribe(
       res => this.getPlacesData( this.currentUser ) )
   }
+
+
+  getLightLogs(id) {
+    this.registerService
+    .getLightLogs(id)
+    .subscribe((reslightlogs => this.showLightLog(reslightlogs)))
+  }
+  showLightLog(reslightlogs){
+    this.count = 0;
+    this.lightlogs = reslightlogs;
+    var li;
+    for(li in this.lightlogs){
+        this.count++;
+    }
+    this.count--;
+    this.state = this.lightlogs[this.count].event;
+
+    this.consumption = this.lights[this.lightlogs[this.count].light_id].consumption;
+  }
+
+
 }
