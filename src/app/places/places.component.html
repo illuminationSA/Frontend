@@ -20,20 +20,39 @@
               </span>
             </span>
           </a>
-          <div id="co{{pl.id}}" class="collapse" style="border-style:solid; border-width:0.5px 0.5px 0.5px 0.5px; border-color: rgb(203,203,203); padding: 10px 20px 10px 20px ">
-            <form>
-              <div class="form-group-row">
-                <label for="PlaceName" class="col-md-2 col-form-name"> Name </label>
-                <div class="col-md-10">
-                  <input type="text" class="form-control" #placeN id="PlaceName{{pl.id}}" placeholder="{{pl.name}}" #newName>
+          <div id="co{{pl.id}}" class="collapse">
+            <div class="card card-body">
+              <form>
+                <div class="form-group-row">
+                  <label for="PlaceName" class="col-md-2 col-form-name"> Name </label>
+                  <div class="col-md-10">
+                    <input type="text" class="form-control" #placeN id="PlaceName{{pl.id}}" placeholder="{{pl.name}}" #newName>
+                  </div>
                 </div>
-              </div>
-
-              <div class="form-group-row col-md-4 col-sm-offset-4">
-                <button (click)="updatePlacesData( placeN.value, pl.id, currentUser ); getPlacesData( currentUser );" type="submit" class="btn btn-primary btn-sm" style="border-radius: 5px; text-size:" >Edit</button>
-              </div>
-            </form>
+                <div class="form-group-row col-md-4 col-sm-offset-4">
+                  <button (click)="updatePlacesData( placeN.value, pl.id, currentUser );" type="submit" class="btn btn-primary btn-sm" style="border-radius: 5px; text-size:" >Edit</button>
+                </div>
+              </form>
+            </div>
           </div>
+        </div>
+      </div>
+      <a class="list-group-item list-group-item-action" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Add New Place
+      </a>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          <form>
+            <div class="form-group-row">
+              <label for="PlaceNamekkk" class="col-md-2 col-form-name"> Name </label>
+              <div class="col-md-10">
+                <input type="text" class="form-control" #placeNoo id="PlaceNameLOL" placeholder="Ufff papi">
+              </div>
+            </div>
+            <div class="form-group-row col-md-4 col-sm-offset-4">
+              <button onclick="alert('Ya puedo sentir la demencia que se está viniendo!!!');" type="submit" class="btn btn-primary btn-sm" style="border-radius: 5px;" >Create</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
