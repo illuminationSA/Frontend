@@ -70,6 +70,8 @@ export class PlacesComponent implements OnInit {
   showLightLog(reslightlogs){
     this.count = 0;
     this.lightlogs = reslightlogs;
+    console.log("lightlogs id: " + this.lightlogs[this.count].light_id);
+    console.log("lightlogs id: " + this.lights[this.lightlogs[this.count].light_id]);
     var li;
     for(li in this.lightlogs){
         this.count++;
@@ -77,7 +79,8 @@ export class PlacesComponent implements OnInit {
     this.count--;
     this.state = this.lightlogs[this.count].event;
 
-    this.consumption = this.lights[this.lightlogs[this.count].light_id].consumption;
+    this.consumption = this.lights[this.lightlogs[this.count].light_id - 1].consumption;
+    console.log("hello" + this.consumption);
   }
 
 
