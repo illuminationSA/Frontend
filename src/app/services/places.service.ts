@@ -8,7 +8,7 @@ export class PlacesService {
 
   constructor( private http: Http ) { }
 
-  submitData(place_name, place_id, user_id){
+  submitData(place_name, place_id ){
     let body = { name: place_name }
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });

@@ -38,8 +38,9 @@ export class PlacesComponent implements OnInit {
     this.placesService.getLights(place_id).subscribe(
       ( lgh => this.lights= lgh ));
   }
-  updatePlacesData( place_name, place_id, user_id ){
-    this.placesService.submitData( place_name, place_id, user_id ).subscribe(
+
+  updatePlacesData( place_name, place_id ){
+    this.placesService.submitData( place_name, place_id ).subscribe(
       res => this.getPlacesData( this.currentUser ) )
   }
 }
