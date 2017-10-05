@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
 
   user: Object;
   public login: any;
+  errorMessage: any;
 
   constructor(
     private registerService: RegisterService,
@@ -52,13 +53,23 @@ export class HomeComponent implements OnInit {
   sendLoginData( email, password ){
     this.registerService
     .postLogin( email, password )
-    .subscribe(resLoginData => this.saveToLocalStorage(resLoginData))
+    .subscribe(
+      resLoginData => this.saveToLocalStorage(resLoginData),
+      error => this.errorHandling(error)
+    )
+  }
+
+  errorHandling(error){
+    this.errorMessage = error;
+    console.log(this.errorMessage)
   }
 
   saveToLocalStorage(resLoginData){
     this.login = resLoginData;
     localStorage.setItem('currentUser', this.login.id);
-    console.log(localStorage.getItem('currentUser'));
+    console.log("local storage: " + localStorage.getItem('currentUser'));
+    console.log(this.login);
+
   }
 
   sendUserData() {
