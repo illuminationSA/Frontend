@@ -43,10 +43,26 @@ export class HomeComponent implements OnInit {
     return this.login;
   }
 
-  sendData( name, email, password ){
-    this.registerService
-    .submitData( name, email, password )
-    .subscribe(res => {console.log(res)})
+  sendData( name, email, email2, password, password2, signUpForm ){
+    console.log('LALAL',email, email2);
+    if ( email != '' && password != '' && email === email2 && password === password2) {
+
+        this.registerService
+        .submitData( name, email, password )
+        .subscribe(
+          (res:any) => {
+            console.log(res)
+          },
+          (err:any) => {
+            console.log('myerror',err);
+
+            alert(err._body); //JSON
+          }
+      )
+
+
+    }
+
   }
 
   sendLoginData( email, password ){
