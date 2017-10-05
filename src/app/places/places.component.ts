@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PlacesService } from '../services/places.service';
+import { RegisterService } from '../services/register.service';
 import { Http, Request, Headers, RequestOptions, RequestMethod } from '@angular/http';
 import { HomeComponent } from '../home/home.component';
 import { LocalStorageService } from 'angular-2-local-storage';
@@ -13,11 +14,15 @@ export class PlacesComponent implements OnInit {
 
   places = [];
   lights = [];
+  lightlogs = [];
   currentUser: Object;
+  count = 0;
+  bool = false;
 
   constructor(
     private placesService: PlacesService,
     private localStorageService: LocalStorageService,
+    private registerService: RegisterService,
     private http: Http
   ) { }
   ngOnInit() {
@@ -37,5 +42,22 @@ export class PlacesComponent implements OnInit {
     this.placesService.getLights(place_id).subscribe(
       ( lgh => this.lights= lgh ));
   }
+
+  getLightLogs(id) {
+    this.registerService
+    .getLightLogs(id)
+    .subscribe((reslightlogs => this.showLightLog(reslightlogs)))
+  }
+  showLightLog(reslightlogs){
+    this.lightlogs = reslightlogs;
+    console.log(this.lightlogs);
+    var li;
+    for(li in this.lightlogs){
+        this.count++;
+    }
+    this.count--;
+    console.log(this.count);
+  }
+
 
 }

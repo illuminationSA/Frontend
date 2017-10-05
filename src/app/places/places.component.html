@@ -30,7 +30,7 @@
               <div class="col-4">
                 <div class="list-group" id="list-tab" role="tablist">
                   <!-- Creación dinámica de botones de lights -->
-                  <a class="list-group-item list-group-item-action" *ngFor="let li of lights" id="{{li.id}}{{li.name}}" data-toggle="list" href="#list-home" role="tab" aria-controls="home">
+                  <a class="list-group-item list-group-item-action" *ngFor="let li of lights" id="{{li.id}}{{li.name}}" data-toggle="list" href="#list-home" role="tab" aria-controls="home" (click)="getLightLogs(li.id)">
                     {{ li.name }}
                     <span class="pull-right">
                       <span class="btn btn-xs btn-default" onclick="alert('prra malparida');">
@@ -48,9 +48,13 @@
               <div class="col-8">
                 <div class="tab-content" id="nav-tabContent">
                   <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">Uno
+                    <div ng-if="fdsfdas">
+                      hey
+                    </div>
                     <span class="pull-left">
                       <label class="switch">
-                        <input type="checkbox">
+                        <!-- CHECKED to check the checkbox lul -->
+                        <input type="checkbox" checked>
                         <span class="slider round"></span>
                       </label>
                     </span>
@@ -80,5 +84,7 @@
     </div>
     <div class="col-6"> <pre> {{ places | json }} </pre> </div>
     <div class="col-6"> <pre> {{ lights | json }} </pre> </div>
+    <a (click)="showLightLog();">k</a>
+    <div class="col-6"> <pre> {{ lightlogs[count] | json }} </pre> </div>
   </div>
 </div>

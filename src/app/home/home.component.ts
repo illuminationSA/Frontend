@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
   }
 
   sendUserData() {
-    this.registerService.getUsers().subscribe(
+    this.registerService.getUser().subscribe(
      (resUserData => this.user = resUserData)
     );
   }
