@@ -20,6 +20,7 @@ export class PlacesComponent implements OnInit {
     private localStorageService: LocalStorageService,
     private http: Http
   ) { }
+
   ngOnInit() {
     //console.log(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = localStorage.getItem('currentUser');
@@ -38,4 +39,18 @@ export class PlacesComponent implements OnInit {
       ( lgh => this.lights= lgh ));
   }
 
+  updatePlacesData( place_name, place_id ){
+    this.placesService.submitData( place_name, place_id ).subscribe(
+      res => this.getPlacesData( this.currentUser ) )
+  }
+
+  deletePlaceCom( place_id ){
+    this.placesService.deletePlace( place_id ).subscribe(
+      res => this.getPlacesData( this.currentUser ) )
+  }
+
+  createPlace( place_name ){
+    this.placesService.newPlace( place_name, this.currentUser ).subscribe(
+      res => this.getPlacesData( this.currentUser ) )
+  }
 }
