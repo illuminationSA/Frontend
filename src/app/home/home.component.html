@@ -8,6 +8,10 @@
 </div>
 
 
+<!-- Inside the <div class> of each one of the form fields, properties and divs have been added for validating the fields
+Especifically from lines 37:48; 56:65; 84:91; 99:110; 117:131; 139:148; 156:165;
+-->
+
 <div class="container">
 
   <div class="col-sm-6">
@@ -24,24 +28,47 @@
     </ul>
     <div id="myTabContent" class="tab-content">
       <div class="tab-pane fade active in" id="sign-in">
+
         <div class="form-group">
-          <label for="inputEmail" class="col-sm-10 control-label">Email</label>
+          <label for="inputEmail3" class="col-sm-10 control-label">Email</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control" #lemail id="inputEmail" placeholder="Email">
+            <input type="text" class="form-control" #lemail id="inputEmail3" placeholder="Email"
+            required
+            [(ngModel)]="inputEmail3.name" #inputEmail3="ngModel"
+            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+
+            <div class="alert alert-danger" [hidden]="inputEmail3.valid || inputEmail3.untouched">
+              <div  *ngIf="inputEmail3.errors && inputEmail3.errors.required">
+                Email is required
+              </div>
+              <div  *ngIf="inputEmail3.errors && inputEmail3.errors.pattern">
+                Email is invalid
+              </div>
+            </div>
+
           </div>
         </div>
         <div class="form-group">
-          <label for="inputPassword" class="col-sm-10 control-label">Password</label>
+          <label for="inputPassword3" class="col-sm-10 control-label">Password</label>
           <div class="col-sm-12">
-            <input type="password" class="form-control" #lpassword id="inputPassword" placeholder="Password">
+            <input type="password" class="form-control" #lpassword id="inputPassword3" placeholder="Password"
+            required
+            [(ngModel)]="inputPassword3.name" #inputPassword3="ngModel">
+
+            <div *ngIf="inputPassword3.invalid && (inputPassword3.dirty || inputPassword3.touched)"
+              class="alert alert-danger">
+
+              <div *ngIf="inputPassword3.errors.required">
+                Password is required.
+              </div>
+            </div>
+
           </div>
         </div>
         <div></div>
         <div class="form-group">
           <div class="col-sm-12 col-sm-offset-4">
-            <a (click)="sendLoginData(lemail.value, lpassword.value);" type="submit" class="btn btn-default">Log in</a>
-            <button (click)="sendUserData(); saveToLocalStorage(login.token, login.id)"  type="submit" class="btn btn-default">get user</button>
-            <pre>{{login | json}}</pre>
+            <a (click)="sendLoginData(lemail.value, lpassword.value);"  type="submit" class="btn btn-default">Log in</a>
           </div>
         </div>
       </div>
@@ -50,31 +77,91 @@
         <div class="form-group">
           <label for="inputName" class="col-sm-10 control-label">Name</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control" #fname id="inputName" placeholder="Name">
+            <input type="text" class="form-control" #fname id="inputName" placeholder="Name"
+            required
+            [(ngModel)]="inputName.name" #inputName="ngModel">
+
+            <div class="alert alert-danger" [hidden]="inputName.valid || inputName.untouched">
+              <div *ngIf="inputName.errors && inputName.errors.required">
+                Name is required.
+              </div>
+            </div>
+
           </div>
         </div>
         <div class="form-group">
           <label for="inputEmail" class="col-sm-10 control-label">Email</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control" #femail id="inputEmail" placeholder="Email">
+            <input type="text" class="form-control" #femail id="inputEmail" placeholder="Email"
+            required
+            [(ngModel)]="inputEmail.name" #inputEmail="ngModel"
+            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+
+            <div class="alert alert-danger" [hidden]="inputEmail.valid || inputEmail.untouched">
+              <div  *ngIf="inputEmail.errors && inputEmail.errors.required">
+                Email is required
+              </div>
+              <div  *ngIf="inputEmail.errors && inputEmail.errors.pattern">
+                Email is invalid
+              </div>
+            </div>
+
           </div>
         </div>
         <div class="form-group">
-          <label for="inputEmail" class="col-sm-10 control-label">Confirm Email</label>
+          <label for="inputEmail2" class="col-sm-10 control-label">Confirm Email</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+            <input type="text" class="form-control" id="inputEmail2" placeholder="Email"
+            required
+            [(ngModel)]="inputEmail2.name" #inputEmail2="ngModel"
+            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+
+            <div class="alert alert-danger" [hidden]="inputEmail2.valid || inputEmail2.untouched">
+              <div *ngIf="inputEmail2.errors && inputEmail2.errors.required">
+                Confirmation Email is required.
+              </div>
+              <div  *ngIf="inputEmail2.errors && inputEmail2.errors.pattern">
+                Confirmation Email is invalid
+              </div>
+              <div *ngIf="inputEmail2.name != inputEmail2.name">
+                Emails don't match.
+              </div>
+            </div>
+
           </div>
         </div>
         <div class="form-group">
           <label for="inputPassword" class="col-sm-10 control-label">Password</label>
           <div class="col-sm-12">
-            <input type="password" class="form-control" #fpassword id="inputPassword" placeholder="Password">
+            <input type="password" class="form-control" #fpassword id="inputPassword" placeholder="Password"
+            required
+            [(ngModel)]="inputPassword.name" #inputPassword="ngModel">
+
+            <div *ngIf="inputPassword.invalid && (inputPassword.dirty || inputPassword.touched)"
+              class="alert alert-danger">
+
+              <div *ngIf="inputPassword.errors.required">
+                Password is required.
+              </div>
+            </div>
+
           </div>
         </div>
         <div class="form-group">
-          <label for="inputPassword" class="col-sm-10 control-label">Confirm Password</label>
+          <label for="inputPassword2" class="col-sm-10 control-label">Confirm Password</label>
           <div class="col-sm-12">
-            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+            <input type="password" class="form-control" id="inputPassword2" placeholder="Password"
+            required
+            [(ngModel)]="inputPassword2.name" #inputPassword2="ngModel">
+
+            <div *ngIf="inputPassword2.invalid && (inputPassword2.dirty || inputPassword2.touched)"
+              class="alert alert-danger">
+
+              <div *ngIf="inputPassword2.errors.required">
+                Confirmation Password is required.
+              </div>
+            </div>
+
           </div>
         </div>
         <div></div>
