@@ -50,12 +50,9 @@ export class HomeComponent implements OnInit {
         this.registerService
         .submitData( name, email, password )
         .subscribe(
-          (res:any) => {
-            console.log(res)
-          },
+          (res:any) => { console.log(res); location.reload() },
           (err:any) => {
             console.log('myerror',err);
-
             alert(err._body); //JSON
           }
       )
@@ -68,7 +65,16 @@ export class HomeComponent implements OnInit {
   sendLoginData( email, password ){
     this.registerService
     .postLogin( email, password )
-    .subscribe(resLoginData => this.saveToLocalStorage(resLoginData))
+    .subscribe(
+      resLoginData => {
+        this.saveToLocalStorage(resLoginData);
+        location.href = "/places";
+      },
+      error => {
+        console.log(error);
+        alert("Email or password invalid!");
+      }
+    )
   }
 
   saveToLocalStorage(resLoginData){
