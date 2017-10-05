@@ -15,7 +15,7 @@ export class PlacesComponent implements OnInit {
   places = [];
   lights = [];
   lightlogs = [];
-  currentUser: Object;
+  currentUser: any;
   count = 0;
   state: boolean;
   consumption: string;

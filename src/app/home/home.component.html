@@ -9,7 +9,7 @@
 
 
 <!-- Inside the <div class> of each one of the form fields, properties and divs have been added for validating the fields
-Especifically from lines 37:48; 56:65; 84:91; 99:110; 117:131; 139:148; 156:165; 
+Especifically from lines 37:48; 56:65; 84:91; 99:110; 117:131; 139:148; 156:165;
 -->
 
 <div class="container">
@@ -68,9 +68,7 @@ Especifically from lines 37:48; 56:65; 84:91; 99:110; 117:131; 139:148; 156:165;
         <div></div>
         <div class="form-group">
           <div class="col-sm-12 col-sm-offset-4">
-            <a (click)="sendLoginData(lemail.value, lpassword.value);" type="submit" class="btn btn-default">Log in</a>
-            <button (click)="sendUserData(); saveToLocalStorage(login.token, login.id)"  type="submit" class="btn btn-default">get user</button>
-            <pre>{{login | json}}</pre>
+            <a (click)="sendLoginData(lemail.value, lpassword.value);"  type="submit" class="btn btn-default">Log in</a>
           </div>
         </div>
       </div>

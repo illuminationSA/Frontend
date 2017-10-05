@@ -12,7 +12,7 @@ import { LocalStorageService } from 'angular-2-local-storage';
 export class HomeComponent implements OnInit {
 
   user: Object;
-  public login: Object;
+  public login: any;
 
   constructor(
     private registerService: RegisterService,
@@ -35,10 +35,7 @@ export class HomeComponent implements OnInit {
     console.log(token);
   }
 
-  saveToLocalStorage(token, id){
-    localStorage.setItem('currentUser', id);
-    console.log(localStorage.getItem('currentUser'));
-  }
+
 
   //getFromLocalStorage()
 
@@ -47,15 +44,27 @@ export class HomeComponent implements OnInit {
   }
 
   sendData( name, email, password ){
-    this.registerService.submitData( name, email, password ).subscribe(res => {console.log(res)})
+    this.registerService
+    .submitData( name, email, password )
+    .subscribe(res => {console.log(res)})
   }
 
   sendLoginData( email, password ){
-    this.registerService.postLogin( email, password ).subscribe(resLoginData => this.login = resLoginData)
+    this.registerService
+    .postLogin( email, password )
+    .subscribe(resLoginData => this.saveToLocalStorage(resLoginData))
+  }
+
+  saveToLocalStorage(resLoginData){
+    this.login = resLoginData;
+    localStorage.setItem('currentUser', this.login.id);
+    console.log(localStorage.getItem('currentUser'));
   }
 
   sendUserData() {
-    this.registerService.getUser().subscribe(
+    this.registerService
+    .getUser()
+    .subscribe(
      (resUserData => this.user = resUserData)
     );
   }

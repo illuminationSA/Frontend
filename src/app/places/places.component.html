@@ -1,6 +1,6 @@
 <app-header> </app-header>
 <div class="container">
-  <pre>{{currentUser | json}}</pre>
+  <!-- <pre>{{currentUser | json}}</pre> -->
   <div class="row">
     <div class="col-5">
       <h3>Places</h3>
@@ -92,23 +92,6 @@
                       </ng-template>
                       <h4><strong>Consumo del día: </strong></h4>
                       <p class="text-primary"> {{consumption}}</p>
-
-                  </div>
-                  <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">Dos
-                    <span class="pull-left">
-                      <label class="switch">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                      </label>
-                    </span>
-                  </div>
-                  <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">Tres
-                    <span class="pull-left">
-                      <label class="switch">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                      </label>
-                    </span>
                   </div>
                 </div>
               </div>
@@ -117,8 +100,10 @@
         </div>
       </div>
     </div>
+    <!--
     <div class="col-6"> <pre> {{ places | json }} </pre> </div>
     <div class="col-6"> <pre> {{ lights | json }} </pre> </div>
     <div class="col-6"> <pre> {{ lightlogs[count] | json }} </pre> </div>
+    //-->
   </div>
 </div>
