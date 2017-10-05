@@ -9,13 +9,30 @@ export class PlacesService {
   constructor( private http: Http ) { }
 
   submitData(place_name, place_id ){
-    let body = { name: place_name }
+    let body = { name: place_name };
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
     return this.http.put('http://localhost:3000/places/'+place_id, body, options)
       .map((response: Response) => { console.log(response.json());
     })
+  }
+
+  newPlace( place_name, u_id ){
+    let body = { name: place_name, user_id: u_id };
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post('http://localhost:3000/places/', body, options)
+    .map((response: Response) => {console.log(response.json());})
+  }
+
+  deletePlace( place_id ){
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.delete('http://localhost:3000/places/'+place_id, options)
+    .map((response: Response) => {console.log(response.json());})
   }
 
   getPlaces( user_id ){
