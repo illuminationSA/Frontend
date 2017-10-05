@@ -61,6 +61,8 @@ export class PlacesComponent implements OnInit {
     }
     this.count--;
     this.state = this.lightlogs[this.count].event;
+
+    this.consumption = this.lights[this.lightlogs[this.count].light_id].consumption;
   }
 
 
