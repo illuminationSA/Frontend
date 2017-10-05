@@ -13,9 +13,8 @@ export class PlacesService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.patch('http://localhost:3000/places/'+place_id, body, options)
+    return this.http.put('http://localhost:3000/places/'+place_id, body, options)
       .map((response: Response) => { console.log(response.json());
-      response.json();
     })
   }
 

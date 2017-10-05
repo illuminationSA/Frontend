@@ -40,6 +40,6 @@ export class PlacesComponent implements OnInit {
   }
   updatePlacesData( place_name, place_id, user_id ){
     this.placesService.submitData( place_name, place_id, user_id ).subscribe(
-      upd => {console.log( upd )})
+      res => this.getPlacesData( this.currentUser ) )
   }
 }
