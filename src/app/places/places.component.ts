@@ -17,7 +17,8 @@ export class PlacesComponent implements OnInit {
   lightlogs = [];
   currentUser: Object;
   count = 0;
-  bool = false;
+  state: boolean;
+  consumption: string;
 
   constructor(
     private placesService: PlacesService,
@@ -31,6 +32,7 @@ export class PlacesComponent implements OnInit {
     console.log("hey");
     console.log(this.currentUser);
     this.getPlacesData( this.currentUser );
+    //this.getLightLogs(this.currentUser);
   }
 
   getPlacesData( user_id ){
@@ -43,20 +45,22 @@ export class PlacesComponent implements OnInit {
       ( lgh => this.lights= lgh ));
   }
 
+
+
   getLightLogs(id) {
     this.registerService
     .getLightLogs(id)
     .subscribe((reslightlogs => this.showLightLog(reslightlogs)))
   }
   showLightLog(reslightlogs){
+    this.count = 0;
     this.lightlogs = reslightlogs;
-    console.log(this.lightlogs);
     var li;
     for(li in this.lightlogs){
         this.count++;
     }
     this.count--;
-    console.log(this.count);
+    this.state = this.lightlogs[this.count].event;
   }
 
 

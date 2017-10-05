@@ -47,17 +47,14 @@
               </div>
               <div class="col-8">
                 <div class="tab-content" id="nav-tabContent">
-                  <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">Uno
-                    <div ng-if="fdsfdas">
-                      hey
-                    </div>
-                    <span class="pull-left">
-                      <label class="switch">
-                        <!-- CHECKED to check the checkbox lul -->
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                      </label>
-                    </span>
+                  <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                      <div *ngIf="state; else on">
+                        <img src="http://findicons.com/files/icons/1681/siena/32/bulb_yellow.png" alt="on">
+                      </div>
+                      <ng-template #on>
+                        <img src="http://findicons.com/files/icons/1681/siena/32/bulb.png" alt="off">
+                      </ng-template>
+
                   </div>
                   <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">Dos
                     <span class="pull-left">
@@ -84,7 +81,6 @@
     </div>
     <div class="col-6"> <pre> {{ places | json }} </pre> </div>
     <div class="col-6"> <pre> {{ lights | json }} </pre> </div>
-    <a (click)="showLightLog();">k</a>
     <div class="col-6"> <pre> {{ lightlogs[count] | json }} </pre> </div>
   </div>
 </div>
