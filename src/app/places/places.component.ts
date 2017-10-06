@@ -15,6 +15,7 @@ export class PlacesComponent implements OnInit {
   places = [];
   lights = [];
   lightlogs = [];
+  schedules = [];
   currentPlace: number;
   currentUser: any;
   count = 0;
@@ -83,6 +84,12 @@ export class PlacesComponent implements OnInit {
     this.registerService
     .getLightLogs(id)
     .subscribe((reslightlogs => this.showLightLog(reslightlogs)))
+  }
+
+  getScheduleTimes(id) {
+    this.registerService
+    .getScheduleTimes(id)
+    .subscribe((resSchedules => this.schedules = resSchedules))
   }
 
   showLightLog(reslightlogs){
