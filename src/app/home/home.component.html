@@ -68,18 +68,26 @@ Especifically from lines 37:48; 56:65; 84:91; 99:110; 117:131; 139:148; 156:165;
         <div></div>
         <div class="form-group">
           <div class="col-sm-12 col-sm-offset-4">
-            <a (click)="sendLoginData(lemail.value, lpassword.value);"  type="submit" class="btn btn-default">Log in</a>
+            <button (click)="sendLoginData(lemail.value, lpassword.value); sendUserData();" type="submit" class="btn btn-default">Log in</button>
+            <!-- <pre>{{login | json}}</pre> -->
           </div>
         </div>
       </div>
 
-      <div class="tab-pane fade" id="sign-up">
+
+
+
+
+
+
+
+      <form class="tab-pane fade" id="sign-up" (ngSubmit)="sendData(fname.value, femail.value, femail2.value, fpassword.value, fpassword2.value, signUpForm)" #signUpForm="ngForm">
         <div class="form-group">
           <label for="inputName" class="col-sm-10 control-label">Name</label>
           <div class="col-sm-12">
             <input type="text" class="form-control" #fname id="inputName" placeholder="Name"
             required
-            [(ngModel)]="inputName.name" #inputName="ngModel">
+            [(ngModel)]="inputName.name" #inputName="ngModel" [ngModelOptions]="{standalone: true}">
 
             <div class="alert alert-danger" [hidden]="inputName.valid || inputName.untouched">
               <div *ngIf="inputName.errors && inputName.errors.required">
@@ -94,7 +102,7 @@ Especifically from lines 37:48; 56:65; 84:91; 99:110; 117:131; 139:148; 156:165;
           <div class="col-sm-12">
             <input type="text" class="form-control" #femail id="inputEmail" placeholder="Email"
             required
-            [(ngModel)]="inputEmail.name" #inputEmail="ngModel"
+            [(ngModel)]="inputEmail.name" #inputEmail="ngModel" [ngModelOptions]="{standalone: true}"
             pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
 
             <div class="alert alert-danger" [hidden]="inputEmail.valid || inputEmail.untouched">
@@ -111,9 +119,9 @@ Especifically from lines 37:48; 56:65; 84:91; 99:110; 117:131; 139:148; 156:165;
         <div class="form-group">
           <label for="inputEmail2" class="col-sm-10 control-label">Confirm Email</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control" id="inputEmail2" placeholder="Email"
+            <input type="text" class="form-control" #femail2 id="inputEmail2" placeholder="Email"
             required
-            [(ngModel)]="inputEmail2.name" #inputEmail2="ngModel"
+            [(ngModel)]="inputEmail2.name" #inputEmail2="ngModel" [ngModelOptions]="{standalone: true}"
             pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
 
             <div class="alert alert-danger" [hidden]="inputEmail2.valid || inputEmail2.untouched">
@@ -122,9 +130,6 @@ Especifically from lines 37:48; 56:65; 84:91; 99:110; 117:131; 139:148; 156:165;
               </div>
               <div  *ngIf="inputEmail2.errors && inputEmail2.errors.pattern">
                 Confirmation Email is invalid
-              </div>
-              <div *ngIf="inputEmail2.name != inputEmail2.name">
-                Emails don't match.
               </div>
             </div>
 
@@ -135,6 +140,8 @@ Especifically from lines 37:48; 56:65; 84:91; 99:110; 117:131; 139:148; 156:165;
           <div class="col-sm-12">
             <input type="password" class="form-control" #fpassword id="inputPassword" placeholder="Password"
             required
+            validateEqual="inputPassword2"
+            reverse = "true" [ngModelOptions]="{standalone: true}"
             [(ngModel)]="inputPassword.name" #inputPassword="ngModel">
 
             <div *ngIf="inputPassword.invalid && (inputPassword.dirty || inputPassword.touched)"
@@ -150,16 +157,18 @@ Especifically from lines 37:48; 56:65; 84:91; 99:110; 117:131; 139:148; 156:165;
         <div class="form-group">
           <label for="inputPassword2" class="col-sm-10 control-label">Confirm Password</label>
           <div class="col-sm-12">
-            <input type="password" class="form-control" id="inputPassword2" placeholder="Password"
+            <input type="password" class="form-control" #fpassword2 id="inputPassword2" placeholder="Password"
             required
+            validateEqual="inputPassword" [ngModelOptions]="{standalone: true}"
             [(ngModel)]="inputPassword2.name" #inputPassword2="ngModel">
 
-            <div *ngIf="inputPassword2.invalid && (inputPassword2.dirty || inputPassword2.touched)"
-              class="alert alert-danger">
+            <div *ngIf="inputPassword2.invalid && (inputPassword2.dirty || inputPassword2.touched)" class="alert alert-danger">
 
-              <div *ngIf="inputPassword2.errors.required">
-                Confirmation Password is required.
-              </div>
+              <div [hidden]="!inputPassword2.errors.validateEqual">
+
+                  Por favor ingresar el nombre del area
+
+
             </div>
 
           </div>
@@ -167,11 +176,11 @@ Especifically from lines 37:48; 56:65; 84:91; 99:110; 117:131; 139:148; 156:165;
         <div></div>
         <div class="form-group">
           <div class="col-sm-12 col-sm-offset-4">
-            <button (click)="sendData(fname.value, femail.value, fpassword.value)"  type="submit" class="btn btn-default">Register</button>
+            <button type="submit" class="btn btn-default" [disabled]="!signUpForm.form.valid">Register</button>
           </div>
         </div>
       </div>
-    </div>
+    </form>
 
 
 
