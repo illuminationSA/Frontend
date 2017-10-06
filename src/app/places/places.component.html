@@ -14,6 +14,7 @@
               <a class="btn btn-xs btn-default" data-toggle="collapse" [attr.data-target]="'#co' + pl.id" data-parent="#list-tab">
                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
               </a>
+              <!-- ELIMINAR un PLACE -->
               <span class="pull-right">
                 <span class="btn btn-xs btn-default" (click)="deletePlaceCom( pl.id );">
                   <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
@@ -23,22 +24,24 @@
           </a>
           <div id="co{{pl.id}}" class="collapse">
             <div class="card card-body">
+              <!-- EDITAR un PLACE -->
               <form>
                 <div class="form-group-row">
-                  <label for="PlaceName" class="col-md-2 col-form-name"> Name </label>
-                  <div class="col-md-10">
+                  <div class="col-md-9">
                     <input type="text" class="form-control" #placeN id="PlaceName{{pl.id}}" placeholder="{{pl.name}}" #newName>
                   </div>
-                </div>
-                <div class="form-group-row col-md-4 col-sm-offset-4">
-                  <button (click)="updatePlacesData( placeN.value, pl.id, currentUser );" type="submit" class="btn btn-primary btn-sm" style="border-radius: 5px; text-size:" >Edit</button>
+                  <div class="form-group-row col-sm-3">
+                    <a (click)="updatePlacesData( placeN.value, pl.id, currentUser );" type="submit"class="btn btn-sm btn-primary">
+                      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </a>
+                  </div>
                 </div>
               </form>
             </div>
           </div>
         </div>
       </div>
-      <!-- Formulario para PLACES -->
+      <!-- Formulario para CREAR PLACES -->
       <a class="list-group-item list-group-item-action" data-toggle="collapse" href="#collapseAddP" aria-expanded="false" aria-controls="collapseExample">
         Add new place
         <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span>
@@ -48,7 +51,7 @@
           <form>
             <div class="form-group-row">
               <div class="col-md-9">
-                <input type="text" class="form-control" #placeNom id="PlaceNameLOL" placeholder="Place Name">
+                <input type="text" class="form-control" #placeNom id="PlaceNameLOL" placeholder="Place name">
               </div>
               <div class="form-group-row col-sm-3">
                 <a (click)="createPlace( placeNom.value );" type="submit"class="btn btn-sm btn-primary">
@@ -87,6 +90,7 @@
                     <!-- test -->
                     <div id="co1{{li.id}}" class="collapse">
                       <div class="card card-body">
+                        
                         <form>
                           <div class="form-group-row">
                             <label for="LightName" class="col-md-2 col-form-name"> Name </label>
@@ -98,6 +102,22 @@
                             <button (click)="updateLightsData( lightN.value, li.id );" type="submit" class="btn btn-primary btn-sm" style="border-radius: 5px; text-size:" >Edit</button>
                           </div>
                         </form>
+
+                        <!--
+                        <form>
+                          <div class="form-group-row">
+                            <div class="col-md-9">
+                              <input type="text" class="form-control" #placeN id="LightName{{li.id}}" placeholder="{{li.name}}" #newName>
+                            </div>
+                            <div class="form-group-row col-sm-3">
+                              <a (click)="updateLightsData( lightN.value, li.id );" type="submit"class="btn btn-sm btn-primary">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                              </a>
+                            </div>
+                          </div>
+                        </form>
+                      -->
+
                       </div>
                     </div>
                     <!-- fin test -->
@@ -116,7 +136,7 @@
                     <form>
                       <div class="form-group-row">
                         <div class="col-md-9">
-                          <input type="text" class="form-control" #lightNom id="lightNameLOL" placeholder="Light Name">
+                          <input type="text" class="form-control" #lightNom id="lightNameLOL" placeholder="Light name">
                         </div>
                         <div class="form-group-row col-sm-3">
                           <a (click)="createLight( lightNom.value );" type="submit"class="btn btn-sm btn-primary">
@@ -146,7 +166,8 @@
                 <div class="list-group" id="list-tab-schedule" role="tablist">
                   <!-- Lista de SCHEDULE TIMES -->
                   <a class="list-group-item list-group-item-action" *ngFor="let sche of schedules" id="{{sche.id}}" data-toggle="list" href="#list-home" role="tab" aria-controls="home">
-                    {{ sche.set_to }} - {{ sche.event_time }}
+                    <div *ngIf=sche.set_to>On - {{ sche.event_time }}</div>
+                    <div *ngIf=!sche.set_to>Off - {{ sche.event_time }}</div>
                   </a>
                 </div>
 
@@ -160,8 +181,8 @@
                     <form>
                       <div class="form-group-row">
                         <div class="col-md-12">
-                          <input type="text" class="form-control" #scheduleDate1 id="ScheduleDate1" placeholder="ON  - Date">
-                          <input type="text" class="form-control" #scheduleDate2 id="ScheduleDate2" placeholder="OFF - Date">
+                          <input type="text" class="form-control" #scheduleDate1 id="ScheduleDate1" placeholder="On  - [Date]">
+                          <input type="text" class="form-control" #scheduleDate2 id="ScheduleDate2" placeholder="Off - [Date]">
                         </div>
                         <div class="form-group-row col-sm-3">
                           <a (click)="createSchedules( scheduleDate1.value, scheduleDate2.value );" type="submit" id="schedule-button" class="btn btn-sm btn-primary">

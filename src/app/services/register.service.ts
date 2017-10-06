@@ -35,14 +35,14 @@ export class RegisterService {
     return this.http
     .get('http://localhost:3000/lights/'+light_id+'/light_logs')
     .map((response:Response) => response.json())
-    .do(light => console.log(light));
+    //.do(light => console.log(light));
   }
 
   getScheduleTimes(light_id){
     return this.http
     .get('http://localhost:3000/lights/'+light_id+'/schedule_times')
     .map((response:Response) => response.json())
-    .do(light => console.log(light));
+    //.do(light => console.log(light));
   }
 
   postLogin(email, password){

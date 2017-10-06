@@ -16,6 +16,7 @@ export class PlacesComponent implements OnInit {
   lights = [];
   lightlogs = [];
   schedules = [];
+  num_schedules: number;
   currentPlace: number;
   currentUser: any;
   currentLight: number;
@@ -33,8 +34,7 @@ export class PlacesComponent implements OnInit {
   ngOnInit() {
     //console.log(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = localStorage.getItem('currentUser');
-    console.log("hey");
-    console.log(this.currentUser);
+    //console.log(this.currentUser);
     this.getPlacesData( this.currentUser );
     //this.getLightLogs(this.currentUser);
   }
@@ -48,7 +48,7 @@ export class PlacesComponent implements OnInit {
     this.placesService.getLights(place_id).subscribe(
       ( lgh => this.lights = lgh ));
     this.currentPlace = place_id;
-    console.log( "Current Place:" + this.currentPlace );
+    //console.log( "Current Place:" + this.currentPlace );
   }
 
   updatePlacesData( place_name, place_id ){
@@ -112,8 +112,8 @@ export class PlacesComponent implements OnInit {
   showLightLog(reslightlogs){
     this.count = 0;
     this.lightlogs = reslightlogs;
-    console.log("lightlogs id: " + this.lightlogs[this.count].light_id);
-    console.log("lightlogs id: " + this.lights[this.lightlogs[this.count].light_id]);
+    //console.log("lightlogs id: " + this.lightlogs[this.count].light_id);
+    //console.log("lightlogs id: " + this.lights[this.lightlogs[this.count].light_id]);
     var li;
     for(li in this.lightlogs){
         this.count++;
@@ -122,8 +122,6 @@ export class PlacesComponent implements OnInit {
     this.state = this.lightlogs[this.count].event;
 
     this.consumption = this.lights[this.lightlogs[this.count].light_id - 1].consumption;
-    console.log("hello" + this.consumption);
+    //console.log("hello" + this.consumption);
   }
-
-
 }
