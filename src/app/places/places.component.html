@@ -2,11 +2,11 @@
 <div class="container">
   <!-- <pre>{{currentUser | json}}</pre> -->
   <div class="row">
-    <!-- PLACES -->
+    <!-- Columna PLACES -->
     <div class="col-3">
       <h3>Places</h3>
       <div class="list-group" id="list-tab" role="tablist">
-        <!-- Creación dinámica de botones de places -->
+        <!-- Lista de PLACES -->
         <div *ngFor="let pl of places">
           <a class="list-group-item list-group-item-action" id="{{pl.id}}{{pl.name}}" data-toggle="list" href="#list-home" role="tab" aria-controls="home" (click)="getLightsData(pl.id)">
             {{pl.name}}
@@ -38,27 +38,29 @@
           </div>
         </div>
       </div>
+      <!-- Formulario para PLACES -->
       <a class="list-group-item list-group-item-action" data-toggle="collapse" href="#collapseAddP" aria-expanded="false" aria-controls="collapseExample">
-        Add New Place
+        Add new place
         <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span>
       </a>
       <div class="collapse" id="collapseAddP">
         <div class="card card-body">
           <form>
             <div class="form-group-row">
-              <label for="PlaceNamekkk" class="col-md-2 col-form-name"> Name </label>
-              <div class="col-md-10">
+              <div class="col-md-9">
                 <input type="text" class="form-control" #placeNom id="PlaceNameLOL" placeholder="Place Name">
               </div>
-            </div>
-            <div class="form-group-row col-md-4 col-sm-offset-4">
-              <button (click)="createPlace( placeNom.value );" type="submit" class="btn btn-primary btn-sm" style="border-radius: 5px;" >Create</button>
+              <div class="form-group-row col-sm-3">
+                <a (click)="createPlace( placeNom.value );" type="submit"class="btn btn-sm btn-primary">
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </a>
+              </div>
             </div>
           </form>
         </div>
       </div>
     </div>
-    <!-- LIGHTS -->
+    <!-- Columna LIGHTS -->
     <div class="col-3">
       <h3>Lights</h3>
       <div class="tab-content" id="nav-tabContent">
@@ -67,7 +69,7 @@
             <div class="row">
               <div class="col-3">
                 <div class="list-group" id="list-tab1" role="tablist">
-                  <!-- Creación dinámica de botones de lights -->
+                  <!-- Lista de LIGHTS -->
                   <div *ngFor="let li of lights">
                     <a class="list-group-item list-group-item-action" id="{{li.id}}{{li.name}}" data-toggle="list" href="#list-home" role="tab" aria-controls="home" (click)="getLightLogs(li.id); getScheduleTimes(li.id);">
                       {{ li.name }}
@@ -103,21 +105,24 @@
                 </div>
                 <!-- inicio add new -->
                 <!-- <div class="col-12 pull-left"> -->
+
+                <!-- Formulario para LIGHTS -->
                 <a class="list-group-item list-group-item-action" data-toggle="collapse" href="#collapseAddLi" aria-expanded="false" aria-controls="collapseExample">
-                  Add New Light
+                  Add new light
                   <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span>
                 </a>
                 <div class="collapse" id="collapseAddLi">
                   <div class="card card-body">
                     <form>
                       <div class="form-group-row">
-                        <label for="lightNamekkk" class="col-md-2 col-form-name"> Name </label>
-                        <div class="col-md-10">
+                        <div class="col-md-9">
                           <input type="text" class="form-control" #lightNom id="lightNameLOL" placeholder="Light Name">
                         </div>
-                      </div>
-                      <div class="form-group-row col-md-4 col-sm-offset-4">
-                        <button (click)="createLight( lightNom.value );" type="submit" class="btn btn-primary btn-sm" style="border-radius: 5px;" >Create</button>
+                        <div class="form-group-row col-sm-3">
+                          <a (click)="createLight( lightNom.value );" type="submit"class="btn btn-sm btn-primary">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                          </a>
+                        </div>
                       </div>
                     </form>
                   </div>
@@ -130,7 +135,7 @@
         </div>
       </div>
     </div>
-    <!-- SCHEDULE TIMES -->
+    <!-- Columna SCHEDULE TIMES -->
     <div class="col-3">
       <h3>Schedule times</h3>
       <div class="tab-content" id="nav-tabContent">
@@ -139,20 +144,33 @@
             <div class="row">
               <div class="col-3">
                 <div class="list-group" id="list-tab-schedule" role="tablist">
-                  <!-- Creación dinámica de botones de schedule_times -->
-                  <a class="list-group-item list-group-item-action" *ngFor="let sche of schedules" id="{{sche.id}}" data-toggle="list" href="#list-home" role="tab" aria-controls="home" (click)="getScheduleTimes(sche.id);">
-                    {{ sche.set_to }}
-                    <span class="pull-right">
-                      <span class="btn btn-xs btn-default" onclick="alert('prra malparida');">
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                      </span>
-                      <span class="pull-right">
-                        <span class="btn btn-xs btn-default" onclick="alert('lok hpta');">
-                          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                        </span>
-                      </span>
-                    </span>
+                  <!-- Lista de SCHEDULE TIMES -->
+                  <a class="list-group-item list-group-item-action" *ngFor="let sche of schedules" id="{{sche.id}}" data-toggle="list" href="#list-home" role="tab" aria-controls="home">
+                    {{ sche.set_to }} - {{ sche.event_time }}
                   </a>
+                </div>
+
+                <!-- Formulario para SCHEDULE TIMES -->
+                <a class="list-group-item list-group-item-action" data-toggle="collapse" href="#collapseAddSche" aria-expanded="false" aria-controls="collapseExample">
+                  Add new schedule time
+                  <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span>
+                </a>
+                <div class="collapse" id="collapseAddSche">
+                  <div class="card card-body">
+                    <form>
+                      <div class="form-group-row">
+                        <div class="col-md-12">
+                          <input type="text" class="form-control" #scheduleDate1 id="ScheduleDate1" placeholder="ON  - Date">
+                          <input type="text" class="form-control" #scheduleDate2 id="ScheduleDate2" placeholder="OFF - Date">
+                        </div>
+                        <div class="form-group-row col-sm-3">
+                          <a (click)="createSchedules( scheduleDate1.value, scheduleDate2.value );" type="submit" id="schedule-button" class="btn btn-sm btn-primary">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                          </a>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
@@ -160,7 +178,7 @@
         </div>
       </div>
     </div>
-    <!--LIGHT INFORMATION-->
+    <!--Columna LIGHT INFORMATION-->
     <div class="col-3">
       <h3>Light information</h3>
       <div class="tab-content" id="nav-tabContent">
@@ -171,7 +189,7 @@
             <ng-template #on>
               <img src="http://findicons.com/files/icons/1681/siena/32/bulb.png" alt="off">
             </ng-template>
-            <h4><strong>Consumo del día: </strong></h4>
+            <h4><strong>Consumption per day</strong></h4>
             <p class="text-primary"> {{consumption}}</p>
         </div>
       </div>
