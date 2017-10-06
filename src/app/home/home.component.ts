@@ -43,16 +43,39 @@ export class HomeComponent implements OnInit {
     return this.login;
   }
 
-  sendData( name, email, password ){
-    this.registerService
-    .submitData( name, email, password )
-    .subscribe(res => {console.log(res)})
+  sendData( name, email, email2, password, password2, signUpForm ){
+    if ( name != '' && email != '' && password != '' && email === email2 && password === password2) {
+
+        this.registerService
+        .submitData( name, email, password )
+        .subscribe(
+          (res:any) => { console.log(res); location.reload(); ; alert("User created\nPlease login") },
+          (err:any) => {
+            console.log('myerror',err);
+            alert(err._body); //JSON
+          }
+      )
+    }
+    else {
+      alert("Be sure to have written your name\nCheck your Email and Password confirmations")
+    }
+
+
   }
 
   sendLoginData( email, password ){
     this.registerService
     .postLogin( email, password )
-    .subscribe(resLoginData => this.saveToLocalStorage(resLoginData))
+    .subscribe(
+      resLoginData => {
+        this.saveToLocalStorage(resLoginData);
+        location.href = "/places";
+      },
+      error => {
+        console.log(error);
+        alert("Email or password invalid!");
+      }
+    )
   }
 
   saveToLocalStorage(resLoginData){

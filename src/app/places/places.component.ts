@@ -15,8 +15,11 @@ export class PlacesComponent implements OnInit {
   places = [];
   lights = [];
   lightlogs = [];
+  schedules = [];
+  num_schedules: number;
   currentPlace: number;
   currentUser: any;
+  currentLight: number;
   count = 0;
   state: boolean;
   consumption: string;
@@ -31,8 +34,7 @@ export class PlacesComponent implements OnInit {
   ngOnInit() {
     //console.log(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = localStorage.getItem('currentUser');
-    console.log("hey");
-    console.log(this.currentUser);
+    //console.log(this.currentUser);
     this.getPlacesData( this.currentUser );
     //this.getLightLogs(this.currentUser);
   }
@@ -46,7 +48,7 @@ export class PlacesComponent implements OnInit {
     this.placesService.getLights(place_id).subscribe(
       ( lgh => this.lights = lgh ));
     this.currentPlace = place_id;
-    console.log( "Current Pleis:" + this.currentPlace );
+    //console.log( "Current Place:" + this.currentPlace );
   }
 
   updatePlacesData( place_name, place_id ){
@@ -79,17 +81,39 @@ export class PlacesComponent implements OnInit {
       res => this.getLightsData( this.currentPlace ) )
   }
 
+  getScheduleData( light_id ){
+    this.placesService.getScheduleTimes(light_id).subscribe(
+      ( sches => this.schedules = sches ));
+    this.currentLight = light_id;
+    console.log( "Current Light:" + this.currentLight );
+  }
+
+  createSchedules( date1, date2 ){
+    this.placesService.newScheduleTime( true, date1, this.currentLight ).subscribe(
+      res => this.getScheduleData( this.currentLight ) )
+    this.placesService.newScheduleTime( false, date2, this.currentLight ).subscribe(
+      res => this.getScheduleData( this.currentLight ) )
+  }
+
   getLightLogs(id) {
     this.registerService
     .getLightLogs(id)
     .subscribe((reslightlogs => this.showLightLog(reslightlogs)))
   }
 
+  // Funciona - Obtiene la lista de schedules times para un determinado id
+  getScheduleTimes(light_id) {
+    this.currentLight = light_id;
+    this.registerService
+    .getScheduleTimes(light_id)
+    .subscribe((resSchedules => this.schedules = resSchedules))
+  }
+
   showLightLog(reslightlogs){
     this.count = 0;
     this.lightlogs = reslightlogs;
-    console.log("lightlogs id: " + this.lightlogs[this.count].light_id);
-    console.log("lightlogs id: " + this.lights[this.lightlogs[this.count].light_id]);
+    //console.log("lightlogs id: " + this.lightlogs[this.count].light_id);
+    //console.log("lightlogs id: " + this.lights[this.lightlogs[this.count].light_id]);
     var li;
     for(li in this.lightlogs){
         this.count++;
@@ -98,8 +122,6 @@ export class PlacesComponent implements OnInit {
     this.state = this.lightlogs[this.count].event;
 
     this.consumption = this.lights[this.lightlogs[this.count].light_id - 1].consumption;
-    console.log("hello" + this.consumption);
+    //console.log("hello" + this.consumption);
   }
-
-
 }
