@@ -38,13 +38,6 @@ export class RegisterService {
     //.do(light => console.log(light));
   }
 
-  getScheduleTimes(light_id){
-    return this.http
-    .get('http://localhost:3000/lights/'+light_id+'/schedule_times')
-    .map((response:Response) => response.json())
-    //.do(light => console.log(light));
-  }
-
   postLogin(email, password){
     let body = {email: email, password: password }
     let headers = new Headers({ 'Content-Type': 'application/json' });

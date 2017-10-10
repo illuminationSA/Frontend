@@ -90,7 +90,7 @@
                     <!-- test -->
                     <div id="co1{{li.id}}" class="collapse">
                       <div class="card card-body">
-                        
+
                         <form>
                           <div class="form-group-row">
                             <label for="LightName" class="col-md-2 col-form-name"> Name </label>
@@ -155,63 +155,33 @@
         </div>
       </div>
     </div>
-    <!-- Columna SCHEDULE TIMES -->
-    <div class="col-3">
-      <h3>Schedule times</h3>
-      <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="list-schedule" role="tabpanel" aria-labelledby="list-home-list">
-          <div class="container">
-            <div class="row">
-              <div class="col-3">
-                <div class="list-group" id="list-tab-schedule" role="tablist">
-                  <!-- Lista de SCHEDULE TIMES -->
-                  <a class="list-group-item list-group-item-action" *ngFor="let sche of schedules" id="{{sche.id}}" data-toggle="list" href="#list-home" role="tab" aria-controls="home">
-                    <div *ngIf=sche.set_to>On - {{ sche.event_time }}</div>
-                    <div *ngIf=!sche.set_to>Off - {{ sche.event_time }}</div>
-                  </a>
-                </div>
-
-                <!-- Formulario para SCHEDULE TIMES -->
-                <a class="list-group-item list-group-item-action" data-toggle="collapse" href="#collapseAddSche" aria-expanded="false" aria-controls="collapseExample">
-                  Add new schedule time
-                  <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span>
-                </a>
-                <div class="collapse" id="collapseAddSche">
-                  <div class="card card-body">
-                    <form>
-                      <div class="form-group-row">
-                        <div class="col-md-12">
-                          <input type="text" class="form-control" #scheduleDate1 id="ScheduleDate1" placeholder="On  - [Date]">
-                          <input type="text" class="form-control" #scheduleDate2 id="ScheduleDate2" placeholder="Off - [Date]">
-                        </div>
-                        <div class="form-group-row col-sm-3">
-                          <a (click)="createSchedules( scheduleDate1.value, scheduleDate2.value );" type="submit" id="schedule-button" class="btn btn-sm btn-primary">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                          </a>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <!--Columna LIGHT INFORMATION-->
-    <div class="col-3">
+    <div class="col-6">
       <h3>Light information</h3>
       <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
-            <div *ngIf="state; else on">
-              <img src="http://findicons.com/files/icons/1681/siena/32/bulb_yellow.png" alt="on">
+          <div class="row">
+            <div class="col-md-3">
+              <!-- Rounded switch -->
+              <label class="switch">
+                <input type='hidden' value='0' name='selfdestruct'>
+                <input type='checkbox' value='1' name='selfdestruct'>
+                <span class="slider round"></span>
+              </label>
             </div>
-            <ng-template #on>
-              <img src="http://findicons.com/files/icons/1681/siena/32/bulb.png" alt="off">
-            </ng-template>
+            <div class="col-md-3">
+              <div *ngIf="state; else on">
+                <img src="http://findicons.com/files/icons/1681/siena/32/bulb_yellow.png" alt="on">
+              </div>
+              <ng-template #on>
+                <img src="http://findicons.com/files/icons/1681/siena/32/bulb.png" alt="off">
+              </ng-template>
+            </div>
+          </div>
+          <div class="col-sm-3">
             <h4><strong>Consumption per day</strong></h4>
             <p class="text-primary"> {{consumption}}</p>
+          </div>
         </div>
       </div>
     </div>
