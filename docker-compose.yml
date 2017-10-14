@@ -1,7 +1,7 @@
 version: '2'
 services:
   sa_front_app:
-    container_name: sa_front_app
+    container_name: illuminationSA_Frontend
     build: .
     command: "npm start -- --host=0.0.0.0 --disable-host-check"
     ports:
