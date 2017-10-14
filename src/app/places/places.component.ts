@@ -70,14 +70,29 @@ export class PlacesComponent implements OnInit {
   }
 
   createPlace( place_name ){
-    this.placesService.newPlace( place_name, this.currentUser ).subscribe(
-      res => this.getPlacesData( this.currentUser ) )
+    if( place_name != ''){
+      this.placesService
+      .newPlace( place_name, this.currentUser )
+      .subscribe(
+        res => this.getPlacesData( this.currentUser ) )
+    }
+    else {
+      alert("Please give the place a name")
+    }
   }
 
   createLight( light_name ){
-    this.placesService.newLight( light_name, this.currentPlace ).subscribe(
-      res => this.getLightsData( this.currentPlace ) )
+    if(light_name != ''){
+      this.placesService
+      .newLight( light_name, this.currentPlace )
+      .subscribe(
+        res => this.getLightsData( this.currentPlace ) )
+    }
+    else {
+      alert("Please give the light a name")
+    }
   }
+
 
   getLightLogs(id) {
     this.registerService

@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
         this.registerService
         .submitData( name, email, password )
         .subscribe(
-          (res:any) => { console.log(res); location.reload(); ; alert("User created\nPlease login") },
+          (res:any) => { console.log(res); location.reload(); alert("User created\nPlease login") },
           (err:any) => {
             console.log('myerror',err);
             alert(err._body); //JSON
