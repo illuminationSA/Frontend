@@ -13,7 +13,7 @@ export class PlacesService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.put('http://192.168.99.101:3000/places/'+place_id, body, options)
+    return this.http.put('http://localhost:3000/places/'+place_id, body, options)
       .map((response: Response) => { console.log(response.json());
     })
   }
@@ -23,7 +23,7 @@ export class PlacesService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.put('http://192.168.99.101:3000/lights/'+light_id, body, options)
+    return this.http.put('http://localhost:3000/lights/'+light_id, body, options)
       .map((response: Response) => { console.log(response.json());
     })
   }
@@ -33,7 +33,7 @@ export class PlacesService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.post('http://192.168.99.101:3000/places/', body, options)
+    return this.http.post('http://localhost:3000/places/', body, options)
     .map((response: Response) => {console.log(response.json());})
   }
 
@@ -42,7 +42,7 @@ export class PlacesService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.post('http://192.168.99.101:3000/lights/', body, options)
+    return this.http.post('http://localhost:3000/lights/', body, options)
     .map((response: Response) => {console.log(response.json());})
   }
 
@@ -50,7 +50,7 @@ export class PlacesService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.delete('http://192.168.99.101:3000/places/'+place_id, options)
+    return this.http.delete('http://localhost:3000/places/'+place_id, options)
     .map((response: Response) => {console.log(response.json());})
   }
 
@@ -58,17 +58,17 @@ export class PlacesService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.delete('http://192.168.99.101:3000/lights/'+light_id, options)
+    return this.http.delete('http://localhost:3000/lights/'+light_id, options)
     .map((response: Response) => {console.log(response.json());})
   }
 
   getPlaces( user_id ){
-    return this.http.get('http://192.168.99.101:3000/users/'+user_id+'/places')
+    return this.http.get('http://localhost:3000/users/'+user_id+'/places')
     .map((response: Response) => response.json());
   }
 
   getLights( place_id ){
-    return this.http.get('http://192.168.99.101:3000/places/'+place_id+'/lights')
+    return this.http.get('http://localhost:3000/places/'+place_id+'/lights')
     .map((response: Response) => response.json());
   }
 }
