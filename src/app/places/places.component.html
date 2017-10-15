@@ -52,12 +52,16 @@
             <div class="form-group-row">
               <div class="col-md-9">
                 <input type="text" class="form-control" #placeNom id="PlaceNameLOL" placeholder="Place name"
+                pattern="^\S+$"
                 required
-                [(ngModel)]="inputName.name" #inputName="ngModel" [ngModelOptions]="{standalone: true}">
+                [(ngModel)]="PlaceNameLOL.name" #PlaceNameLOL="ngModel" [ngModelOptions]="{standalone: true}">
 
-                <div class="alert alert-danger" [hidden]="inputName.valid || inputName.untouched">
-                  <div *ngIf="inputName.errors && inputName.errors.required">
-                    Name is required.
+                <div class="alert alert-danger" [hidden]="PlaceNameLOL.valid || PlaceNameLOL.untouched">
+                  <div *ngIf="PlaceNameLOL.errors && PlaceNameLOL.errors.required">
+                    Place name is required.
+                  </div>
+                  <div *ngIf="PlaceNameLOL.errors && PlaceNameLOL.errors.pattern">
+                    No spaces are allowed
                   </div>
                 </div>
 
@@ -132,12 +136,16 @@
                       <div class="form-group-row">
                         <div class="col-md-9">
                           <input type="text" class="form-control" #lightNom id="lightNameLOL" placeholder="Light name"
+                          pattern="^\S+$"
                           required
-                          [(ngModel)]="inputName.name" #inputName="ngModel" [ngModelOptions]="{standalone: true}">
+                          [(ngModel)]="lightNameLOL.name" #lightNameLOL="ngModel" [ngModelOptions]="{standalone: true}">
 
-                          <div class="alert alert-danger" [hidden]="inputName.valid || inputName.untouched">
-                            <div *ngIf="inputName.errors && inputName.errors.required">
-                              Name is required.
+                          <div class="alert alert-danger" [hidden]="lightNameLOL.valid || lightNameLOL.untouched">
+                            <div *ngIf="lightNameLOL.errors && lightNameLOL.errors.required">
+                              Light name is required.
+                            </div>
+                            <div *ngIf="lightNameLOL.errors && lightNameLOL.errors.pattern">
+                              No spaces are allowed
                             </div>
                           </div>
                         </div>
