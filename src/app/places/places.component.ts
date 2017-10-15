@@ -70,14 +70,29 @@ export class PlacesComponent implements OnInit {
   }
 
   createPlace( place_name ){
-    this.placesService.newPlace( place_name, this.currentUser ).subscribe(
-      res => this.getPlacesData( this.currentUser ) )
+    if( place_name != '' && place_name.match(/^\S+$/) ){
+      this.placesService
+      .newPlace( place_name, this.currentUser )
+      .subscribe(
+        res => this.getPlacesData( this.currentUser ) )
+    }
+    else {
+      alert("Be sure to have given the place a name\nRemember the name can't have spaces")
+    }
   }
 
-  createLight( light_name ){
-    this.placesService.newLight( light_name, this.currentPlace ).subscribe(
-      res => this.getLightsData( this.currentPlace ) )
+  createLight( light_name  ){
+    if(light_name != '' && light_name.match(/^\S+$/)){
+      this.placesService
+      .newLight( light_name, this.currentPlace )
+      .subscribe(
+        res => this.getLightsData( this.currentPlace ) )
+    }
+    else {
+      alert("Be sure to have given the light a name\nRemember the name can't have spaces")
+    }
   }
+
 
   getLightLogs(id) {
     this.registerService

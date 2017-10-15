@@ -44,12 +44,12 @@ export class HomeComponent implements OnInit {
   }
 
   sendData( name, email, email2, password, password2, signUpForm ){
-    if ( name != '' && email != '' && password != '' && email === email2 && password === password2) {
-
+    if ( name != '' && email != '' && password != '' && email === email2 && password === password2 && email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
+        && email2.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && name.match(/^\S+$/)) {
         this.registerService
         .submitData( name, email, password )
         .subscribe(
-          (res:any) => { console.log(res); location.reload(); ; alert("User created\nPlease login") },
+          (res:any) => { console.log(res); location.reload(); alert("User created\nPlease login") },
           (err:any) => {
             console.log('myerror',err);
             alert(err._body); //JSON
@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit {
       )
     }
     else {
-      alert("Be sure to have written your name\nCheck your Email and Password confirmations")
+      alert("Be sure to have written your name without spaces\nBe sure your Email is valid\nCheck your Email and Password confirmations")
     }
 
 
