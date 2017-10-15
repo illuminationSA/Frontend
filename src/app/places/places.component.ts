@@ -32,6 +32,9 @@ export class PlacesComponent implements OnInit {
   ngOnInit() {
     //console.log(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = localStorage.getItem('currentUser');
+    if(this.currentUser == null){
+      location.href = "/";
+    }
     //console.log(this.currentUser);
     this.getPlacesData( this.currentUser );
     //this.getLightLogs(this.currentUser);
