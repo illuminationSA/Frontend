@@ -4,7 +4,6 @@ import { RegisterService } from '../services/register.service';
 import { Http, Request, Headers, RequestOptions, RequestMethod } from '@angular/http';
 import { HomeComponent } from '../home/home.component';
 import { LocalStorageService } from 'angular-2-local-storage';
-import { UiSwitchModule } from 'angular2-ui-switch';
 
 @Component({
   selector: 'app-places',
