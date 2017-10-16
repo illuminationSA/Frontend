@@ -46,6 +46,15 @@ export class PlacesService {
     .map((response: Response) => {console.log(response.json());})
   }
 
+  newLightLog( log_event, l_id ){
+    let body = { event: log_event, light_id: l_id };
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post('http://localhost:3000/light_logs/', body, options)
+    .map((response: Response) => {console.log(response.json());})
+  }
+
   deletePlace( place_id ){
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
@@ -71,4 +80,10 @@ export class PlacesService {
     return this.http.get('http://localhost:3000/places/'+place_id+'/lights')
     .map((response: Response) => response.json());
   }
+
+  /*
+  getLightLogs( light_id ){
+    return this.http.get('http://localhost:3000/lights/'+light_id+'/light_logs')
+    .map((response: Response) => response.json());
+  }*/
 }

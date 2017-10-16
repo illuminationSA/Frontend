@@ -1,3 +1,4 @@
+import { UiSwitchModule } from 'angular2-ui-switch';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -26,6 +27,7 @@ import { LocalStorageModule } from 'angular-2-local-storage';
     ConsumptionComponent
   ],
   imports: [
+    UiSwitchModule,
     BrowserModule,
     FormsModule,
     HttpModule,
