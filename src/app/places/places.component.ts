@@ -115,7 +115,7 @@ export class PlacesComponent implements OnInit {
     this.currentLight = id;
     this.registerService
     .getLightLogs(id)
-    .subscribe((reslightlogs => this.showLightLog(reslightlogs)))
+    //.subscribe((reslightlogs => this.showLightLog(reslightlogs)))
   }
 
   showLightLog(reslightlogs){
@@ -131,6 +131,6 @@ export class PlacesComponent implements OnInit {
     this.state = this.lightlogs[this.count].event;
 
     this.consumption = this.lights[this.lightlogs[this.count].light_id - 1].consumption;
-    //console.log("hello" + this.consumption);
+    console.log("hello" + this.consumption);
   }
 }
