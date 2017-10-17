@@ -78,16 +78,12 @@ Specifically from lines 37:48; 56:65; 84:91; 99:110; 117:131; 139:148; 156:165;
           <label for="inputName" class="col-sm-10 control-label">Name</label>
           <div class="col-sm-12">
             <input type="text" class="form-control" #fname id="inputName" placeholder="Name"
-            pattern="^\S+$"
             required
             [(ngModel)]="inputName.name" #inputName="ngModel" [ngModelOptions]="{standalone: true}">
 
             <div class="alert alert-danger" [hidden]="inputName.valid || inputName.untouched">
               <div *ngIf="inputName.errors && inputName.errors.required">
                 Name is required.
-              </div>
-              <div *ngIf="inputName.errors && inputName.errors.pattern">
-                No spaces are allowed
               </div>
             </div>
 
@@ -136,14 +132,11 @@ Specifically from lines 37:48; 56:65; 84:91; 99:110; 117:131; 139:148; 156:165;
           <div class="col-sm-12">
             <input type="password" class="form-control" #fpassword id="inputPassword" placeholder="Password"
             required
-            validateEqual="inputPassword2"
-            reverse = "true" [ngModelOptions]="{standalone: true}"
+            [ngModelOptions]="{standalone: true}"
             [(ngModel)]="inputPassword.name" #inputPassword="ngModel">
 
-            <div *ngIf="inputPassword.invalid && (inputPassword.dirty || inputPassword.touched)"
-              class="alert alert-danger">
-
-              <div *ngIf="inputPassword.errors.required">
+            <div class="alert alert-danger" [hidden]="inputPassword.valid || inputPassword.untouched">
+              <div *ngIf="inputPassword.errors && inputPassword.errors.required">
                 Password is required.
               </div>
             </div>
@@ -155,27 +148,24 @@ Specifically from lines 37:48; 56:65; 84:91; 99:110; 117:131; 139:148; 156:165;
           <div class="col-sm-12">
             <input type="password" class="form-control" #fpassword2 id="inputPassword2" placeholder="Password"
             required
-            validateEqual="inputPassword" [ngModelOptions]="{standalone: true}"
+            [ngModelOptions]="{standalone: true}"
             [(ngModel)]="inputPassword2.name" #inputPassword2="ngModel">
 
-            <div *ngIf="inputPassword2.invalid && (inputPassword2.dirty || inputPassword2.touched)" class="alert alert-danger">
-
-              <div [hidden]="!inputPassword2.errors.validateEqual">
-
-                  Por favor ingresar el nombre del area
-
-
+            <div class="alert alert-danger" [hidden]="inputPassword2.valid || inputPassword2.untouched">
+              <div *ngIf="inputPassword2.errors && inputPassword2.errors.required">
+                Confirmation Password is required.
+              </div>
             </div>
 
           </div>
         </div>
-        <div></div>
+
         <div class="form-group">
           <div class="col-sm-12 col-sm-offset-4">
             <button type="submit" class="btn btn-default" [disabled]="!signUpForm.form.valid">Register</button>
           </div>
         </div>
-      </div>
+
     </form>
 
 
