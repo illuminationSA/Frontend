@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
 
   sendData( name, email, email2, password, password2, signUpForm ){
     if ( name != '' && email != '' && password != '' && email === email2 && password === password2 && email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
-        && email2.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) && name.match(/^\S+$/)) {
+        && email2.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
         this.registerService
         .submitData( name, email, password )
         .subscribe(
