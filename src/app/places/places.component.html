@@ -173,12 +173,10 @@
         <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
           <div class="row">
             <div class="col-md-3">
-              <!-- Rounded switch -->
-              <label class="switch">
-                <input type='hidden' value='0' name='selfdestruct'>
-                <input type='checkbox' value='1' name='selfdestruct'>
-                <span class="slider round"></span>
-              </label>
+              <!-- SWITCH------------------------------------------------------------->
+              <ui-switch color="#2780E3" switchColor="#343A40" defaultBgColor="#F5F5F5" [(ngModel)]="enable" (click)="createLightLog(enable)"></ui-switch>
+              <p>{{ enable }}</p>
+              <!-- SWITCH------------------------------------------------------------->
             </div>
             <div class="col-md-3">
               <div *ngIf="state; else on">
@@ -198,7 +196,7 @@
     </div>
     <!--
     <div class="col-6"> <pre> {{ places | json }} </pre> </div>
-    <div class="col-6"> <pre> {{ lights | json }} </pre> </div> //-->
+    <div class="col-6"> <pre> {{ lights | json }} </pre> </div> -->
     <div class="col-6"> <pre> {{ lightlogs[count] | json }} </pre> </div>
   </div>
 </div>

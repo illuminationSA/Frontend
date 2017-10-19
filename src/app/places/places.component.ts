@@ -20,6 +20,7 @@ export class PlacesComponent implements OnInit {
   currentLight: number;
   count = 0;
   state: boolean;
+  event_value: string = "off";
   consumption: string;
 
   constructor(
@@ -50,6 +51,13 @@ export class PlacesComponent implements OnInit {
       ( lgh => this.lights = lgh ));
     this.currentPlace = place_id;
     //console.log( "Current Place:" + this.currentPlace );
+  }
+
+  getLightLogsData( light_id ){
+    /*
+    this.placesService.getLightLogs(light_id).subscribe(
+      ( lghs => this.lightlogs = lghs ));
+    this.currentLight = light_id;*/
   }
 
   updatePlacesData( place_name, place_id ){
@@ -96,8 +104,15 @@ export class PlacesComponent implements OnInit {
     }
   }
 
+  createLightLog( event ){
+    this.placesService
+    .newLightLog( event, this.currentLight )
+    .subscribe(
+      res => this.getLightLogsData( this.currentLight ) )
+  }
 
   getLightLogs(id) {
+    this.currentLight = id;
     this.registerService
     .getLightLogs(id)
     .subscribe((reslightlogs => this.showLightLog(reslightlogs)))
