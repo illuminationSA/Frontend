@@ -8,6 +8,7 @@
       <div class="list-group" id="list-tab" role="tablist">
         <!-- Lista de PLACES -->
         <div *ngFor="let pl of places">
+          <!-- COn el método que se llama aquí se hace visible la columna LIGHTS -->
           <a class="list-group-item list-group-item-action" id="{{pl.id}}{{pl.name}}" data-toggle="list" href="#list-home" role="tab" aria-controls="home" (click)="getLightsData(pl.id)">
             {{pl.name}}
             <span class="pull-right">
@@ -87,6 +88,7 @@
                 <div class="list-group" id="list-tab1" role="tablist">
                   <!-- Lista de LIGHTS -->
                   <div *ngFor="let li of lights">
+                    <!-- desde el método llamado aquí se hace visible LIGHT INFORMATION -->
                     <a class="list-group-item list-group-item-action" id="{{li.id}}{{li.name}}" data-toggle="list" href="#list-home" role="tab" aria-controls="home" (click)="getLightLogs(li.id)">
                       {{ li.name }}
                       <span class="pull-right">
@@ -122,8 +124,6 @@
                     <!-- fin test -->
                   </div>
                 </div>
-                <!-- inicio add new -->
-                <!-- <div class="col-12 pull-left"> -->
 
                 <!-- Formulario para crear un LIGHT -->
                 <a class="list-group-item list-group-item-action" data-toggle="collapse" href="#collapseAddLi" aria-expanded="false" aria-controls="collapseExample">
@@ -158,8 +158,6 @@
                     </form>
                   </div>
                 </div>
-                <!-- </div> -->
-                <!-- fin add new -->
               </div>
             </div>
           </div>
@@ -177,14 +175,6 @@
               <ui-switch color="#2780E3" switchColor="#343A40" defaultBgColor="#F5F5F5" [(ngModel)]="enable" (click)="createLightLog(enable)"></ui-switch>
               <p>{{ enable }}</p>
               <!-- SWITCH------------------------------------------------------------->
-            </div>
-            <div class="col-md-3">
-              <div *ngIf="state; else on">
-                <img src="http://findicons.com/files/icons/1681/siena/32/bulb_yellow.png" alt="on">
-              </div>
-              <ng-template #on>
-                <img src="http://findicons.com/files/icons/1681/siena/32/bulb.png" alt="off">
-              </ng-template>
             </div>
           </div>
           <div class="col-md-3">
