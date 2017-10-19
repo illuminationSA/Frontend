@@ -47,6 +47,7 @@ export class PlacesComponent implements OnInit {
   }
 
   getLightsData( place_id ){
+    document.getElementById('lights-column').style.visibility = "visible";
     this.placesService.getLights(place_id).subscribe(
       ( lgh => this.lights = lgh ));
     this.currentPlace = place_id;
@@ -131,6 +132,7 @@ export class PlacesComponent implements OnInit {
   }
 
   getLightLogs(id) {
+    document.getElementById('light-info').style.visibility = "visible";
     this.currentLight = id;
     this.registerService
     .getLightLogs(id)

@@ -47,4 +47,12 @@ export class RegisterService {
     .map((response: Response ) => response.json());
   }
 
+  deleteLogout(){
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.delete('http://localhost:3000/logout.json')
+    .map((response: Response) => {console.log(response.json());})
+  }
+
 }
