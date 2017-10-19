@@ -160,4 +160,9 @@ export class PlacesComponent implements OnInit {
     this.consumption = this.lights[this.lightlogs[this.count].light_id - 1].consumption;
     console.log("hello" + this.consumption);
   }
+
+  lightActionSwag( id ){
+    document.getElementById('light-info').style.visibility = "visible";
+    this.currentLight = id;
+  }
 }
