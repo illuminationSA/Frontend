@@ -112,6 +112,8 @@ export class PlacesComponent implements OnInit {
   }
 
   getLightLogs(id) {
+    document.getElementById('light-info').style.visibility = "visible";
+    console.log("yeah");
     this.currentLight = id;
     this.registerService
     .getLightLogs(id)
