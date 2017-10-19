@@ -54,10 +54,27 @@ export class PlacesComponent implements OnInit {
   }
 
   getLightLogsData( light_id ){
-    /*
     this.placesService.getLightLogs(light_id).subscribe(
-      ( lghs => this.lightlogs = lghs ));
-    this.currentLight = light_id;*/
+      ( llogs => {
+        this.lightlogs = llogs;
+        var testo = [];
+        testo = llogs;
+        var cnt = 0;
+        for(let lilo in llogs){
+          cnt++;
+        }
+        cnt--;
+        if( cnt > 0 ){
+          console.log( "light id: " + light_id + " last light log: " + llogs[cnt].event );
+          this.state = llogs[cnt].event;
+          return llogs[cnt].event;
+        }
+        else{
+          console.log( "no hay weas lok" );
+          this.state = false;
+          return false;
+        }
+      } ) );
   }
 
   updatePlacesData( place_name, place_id ){
@@ -108,7 +125,9 @@ export class PlacesComponent implements OnInit {
     this.placesService
     .newLightLog( event, this.currentLight )
     .subscribe(
-      res => this.getLightLogsData( this.currentLight ) )
+      res => {
+        this.getLightLogsData( this.currentLight );
+      } )
   }
 
   getLightLogs(id) {
@@ -116,6 +135,12 @@ export class PlacesComponent implements OnInit {
     this.registerService
     .getLightLogs(id)
     //.subscribe((reslightlogs => this.showLightLog(reslightlogs)))
+  }
+
+  updateStatus( event ){
+    console.log( "evento: " + event + " light_id " + this.currentLight );
+    this.placesService.updateLightStatus( event, this.currentLight ).subscribe(
+      res => this.getLightsData( this.currentPlace ) );
   }
 
   showLightLog(reslightlogs){
