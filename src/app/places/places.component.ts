@@ -125,7 +125,9 @@ export class PlacesComponent implements OnInit {
     this.placesService
     .newLightLog( event, this.currentLight )
     .subscribe(
-      res => this.getLightLogsData( this.currentLight ) )
+      res => {
+        this.getLightLogsData( this.currentLight );
+      } )
   }
 
   getLightLogs(id) {
@@ -135,8 +137,10 @@ export class PlacesComponent implements OnInit {
     //.subscribe((reslightlogs => this.showLightLog(reslightlogs)))
   }
 
-  getLightState(id){
-
+  updateStatus( event ){
+    console.log( "evento: " + event + " light_id " + this.currentLight );
+    this.placesService.updateLightStatus( event, this.currentLight ).subscribe(
+      res => this.getLightsData( this.currentPlace ) );
   }
 
   showLightLog(reslightlogs){

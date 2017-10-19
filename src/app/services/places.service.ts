@@ -85,4 +85,15 @@ export class PlacesService {
     return this.http.get('http://localhost:3000/lights/'+light_id+'/light_logs')
     .map((response: Response) => response.json());
   }
+
+  updateLightStatus( status, light_id ){
+    console.log( "light status update" );
+    let body = { status: status };
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.put('http://localhost:3000/lights/'+light_id, body, options)
+      .map( (response: Response) => { console.log(response.json() );
+    })
+  }
 }
