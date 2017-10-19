@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
     private http: Http
   ) { }
 
+
   ngOnInit() {
     localStorage.clear();
   }
