@@ -8,7 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { PlacesComponent } from './places/places.component';
-import { MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule, MatTabsModule, MatIconModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { RegisterService } from './services/register.service';
 import { ChartsModule } from 'ng2-charts';
@@ -30,13 +29,6 @@ import { LocalStorageModule } from 'angular-2-local-storage';
     UiSwitchModule,
     HttpModule,
     BrowserAnimationsModule,
-    MdButtonModule,
-    MdCardModule,
-    MdMenuModule,
-    MdToolbarModule,
-    MatIconModule,
-    MatTabsModule,
-    MdIconModule,
     AppRoutingModule,
     ChartsModule,
     LocalStorageModule.withConfig({
