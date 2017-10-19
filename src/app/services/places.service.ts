@@ -81,9 +81,8 @@ export class PlacesService {
     .map((response: Response) => response.json());
   }
 
-  /*
   getLightLogs( light_id ){
     return this.http.get('http://localhost:3000/lights/'+light_id+'/light_logs')
     .map((response: Response) => response.json());
-  }*/
+  }
 }

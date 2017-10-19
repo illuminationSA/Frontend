@@ -99,6 +99,16 @@
                           </span>
                         </span>
                       </span>
+                      <span class="btn btn-xs btn-default pull-right" style="height: 23px; width: 25px; margin-top: 1px; padding: 0px 4px 5px 3px;" (click)="getLightLogsData(li.id)">
+                        <div *ngIf="getLightLogsData(li.id); else notlit">
+                          <img src="http://findicons.com/files/icons/1681/siena/16/bulb_yellow.png" alt="litaf">
+                        </div>
+                        <ng-template #notlit>
+                          <img src="http://findicons.com/files/icons/1681/siena/16/bulb.png" alt="nolit">
+                        </ng-template>
+
+                        <!-- http://findicons.com/files/icons/1681/siena/16/bulb.png -->
+                      </span>
                     </a>
                     <!-- test -->
                     <div id="co1{{li.id}}" class="collapse">
