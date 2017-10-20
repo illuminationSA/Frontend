@@ -1,4 +1,5 @@
 #!/bin/bash
+# Frontend configuration script
 
 rs_path="$(pwd)/src/app/services/register.service.ts" # register.service.ts
 ps_path="$(pwd)/src/app/services/places.service.ts" # places.service.ts
