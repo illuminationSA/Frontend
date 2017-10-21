@@ -3,6 +3,7 @@ import { RegisterService } from '../services/register.service';
 import { Http, Request, RequestMethod, Headers, RequestOptions } from '@angular/http';
 import { AppRoutingModule } from '../app-routing.module';
 import { LocalStorageService } from 'angular-2-local-storage';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-home',
@@ -23,6 +24,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     localStorage.clear();
+    document.getElementById('logout-button').style.visibility = "hidden";
   }
 
   //IMPORTANTE!!
@@ -83,6 +85,7 @@ export class HomeComponent implements OnInit {
     this.login = resLoginData;
     localStorage.setItem('currentUser', this.login.id);
     console.log(localStorage.getItem('currentUser'));
+    document.getElementById('logout-button').style.visibility = "visible";
   }
 
   sendUserData() {

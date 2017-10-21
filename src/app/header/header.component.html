@@ -23,10 +23,10 @@
       <span class="btn btn-default navbar-right" onclick="alert('Logout was successful'); event.stopPropagation();">
           <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
       </span> //-->
-      <div class="dropdown navbar-right">
+      <div class="dropdown navbar-right" id="logout-button" style=" visibility: visible;">
         <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></button>
         <ul class="dropdown-menu">
-          <li><a href="#" (click)="deleteLogout()">Logout</a></li>
+          <li><a (click)="logoutProcess()">Logout</a></li>
         </ul>
       </div>
     </div>

@@ -16,11 +16,12 @@ export class HeaderComponent implements OnInit {
 
   deleteLogout(){
     this.registerService.deleteLogout()
-    .subscribe(res => this.logoutProcess(res));
+    .subscribe(res => this.logoutProcess());
   }
 
-  logoutProcess(res){
-    console.log(res);
+  logoutProcess(){
+    console.log("perri");
+    document.getElementById('logout-button').style.visibility = "hidden";
     location.href = "";
   }
 
