@@ -90,12 +90,23 @@ export class PlacesComponent implements OnInit {
 
   deletePlaceCom( place_id ){
     this.placesService.deletePlace( place_id ).subscribe(
-      res => this.getPlacesData( this.currentUser ) )
+      res => this.deleteAndHidex2( res ) )
+  }
+
+  deleteAndHidex2(res){
+    this.getPlacesData( this.currentUser );
+    document.getElementById("lights-column").style.visibility = "hidden";
+    document.getElementById("light-info").style.visibility = "hidden";
   }
 
   deleteLightCom( light_id ){
     this.placesService.deleteLight( light_id ).subscribe(
-      res => this.getLightsData( this.currentPlace ) )
+      res => this.deleteAndHide( res ) )
+  }
+
+  deleteAndHide(res){
+    this.getLightsData(this.currentPlace);
+    document.getElementById("light-info").style.visibility = "hidden";
   }
 
   createPlace( place_name ){
