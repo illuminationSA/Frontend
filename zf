@@ -2,22 +2,23 @@
 # Frontend configuration script
 
 rs_path="$(pwd)/src/app/services/register.service.ts" # register.service.ts
-ps_path="$(pwd)/src/app/services/places.service.ts" # places.service.ts
-
-if [ $# -eq 0 ]; then # Check arguments existence
-    echo "No arguments supplied"; exit 1
+ps_path="$(pwd)/src/app/services/places.service.ts"   # places.service.ts
+if [ $# -eq 0 ]; then # Check options existence
+  echo "No arguments supplied"
+elif [ $# -gt 1 ]; then # Check options number
+  echo "The number of option is greater than 1"
 elif [ $1 = "-l" ]; then # Run on localhost
-  echo "Localhost option selected"; sleep 0.3
+  echo "Localhost option selected"
   sed -i -e 's/192.168.99.101:3000/localhost:3000/g' $rs_path
   sed -i -e 's/192.168.99.101:3000/localhost:3000/g' $ps_path
   ng s
 elif [ $1 = "-d" ]; then # Run on docker
-  echo "Docker option selected"; sleep 0.3
+  echo "Docker option selected"
   sed -i -e 's/localhost:3000/192.168.99.101:3000/g' $rs_path
   sed -i -e 's/localhost:3000/192.168.99.101:3000/g' $ps_path
-  eval $(docker-machine env rancher-node1) # Select node1 and load blackend
+  eval $(docker-machine env rancher-node1)
   docker-compose build
   docker-compose up
-else # Check different argument
-  echo "Argument not allowed"; exit 1
+else # Error message
+  echo "ERROR: this option is not allowed"
 fi
