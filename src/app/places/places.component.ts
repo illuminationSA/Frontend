@@ -51,6 +51,7 @@ export class PlacesComponent implements OnInit {
     this.placesService.getLights(place_id).subscribe(
       ( lgh => this.lights = lgh ));
     this.currentPlace = place_id;
+    document.getElementById("light-info").style.visibility = "hidden";
     //console.log( "Current Place:" + this.currentPlace );
   }
 
