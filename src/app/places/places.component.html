@@ -9,7 +9,7 @@
         <!-- Lista de PLACES -->
         <div *ngFor="let pl of places">
           <!-- COn el método que se llama aquí se hace visible la columna LIGHTS -->
-          <a class="list-group-item list-group-item-action" id="{{pl.id}}{{pl.name}}" data-toggle="list" href="javascript:void(0)" role="tab" aria-controls="home" (click)="getLightsData(pl.id)">
+          <a class="list-group-item list-group-item-action" id="{{pl.id}}{{pl.name}}" data-toggle="list" href="javascript:void(0)" role="tab" aria-controls="home" (click)="getLightsData(pl.id); hideLightInfo();">
             {{pl.name}}
             <span class="pull-right">
               <a class="btn btn-xs btn-default" data-toggle="collapse" [attr.data-target]="'#co' + pl.id" data-parent="#list-tab">
