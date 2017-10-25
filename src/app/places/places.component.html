@@ -9,7 +9,7 @@
         <!-- Lista de PLACES -->
         <div *ngFor="let pl of places">
           <!-- COn el método que se llama aquí se hace visible la columna LIGHTS -->
-          <a class="list-group-item list-group-item-action" id="{{pl.id}}{{pl.name}}" data-toggle="list" href="#list-home" role="tab" aria-controls="home" (click)="getLightsData(pl.id)">
+          <a class="list-group-item list-group-item-action" id="{{pl.id}}{{pl.name}}" data-toggle="list" href="javascript:void(0)" role="tab" aria-controls="home" (click)="getLightsData(pl.id)">
             {{pl.name}}
             <span class="pull-right">
               <a class="btn btn-xs btn-default" data-toggle="collapse" [attr.data-target]="'#co' + pl.id" data-parent="#list-tab">
@@ -32,7 +32,7 @@
                     <input type="text" class="form-control" #placeN id="PlaceName{{pl.id}}" placeholder="{{pl.name}}" #newName>
                   </div>
                   <div class="form-group-row col-sm-3">
-                    <a (click)="updatePlacesData( placeN.value, pl.id, currentUser );" type="submit"class="btn btn-sm btn-primary">
+                    <a (click)="updatePlacesData( placeN.value, pl.id, currentUser );" type="submit" class="btn btn-sm btn-primary">
                       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </a>
                   </div>
@@ -74,6 +74,14 @@
               </div>
             </div>
           </form>
+        </div>
+      </div>
+      <div class="container">
+        <h2>List Group With Linked Items</h2>
+        <div class="list-group" role="tablist">
+          <a href="javascript:void(0)" class="list-group-item list-group-item-action" role="tab" aria-controls="home">First item</a>
+          <a href="javascript:void(0)" class="list-group-item list-group-item-action" role="tab" aria-controls="home">Second item</a>
+          <a href="javascript:void(0)" class="list-group-item list-group-item-action" role="tab" aria-controls="home">Third item</a>
         </div>
       </div>
     </div>
