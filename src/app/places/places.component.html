@@ -9,12 +9,12 @@
         <!-- Lista de PLACES -->
         <div *ngFor="let pl of places">
           <!-- COn el método que se llama aquí se hace visible la columna LIGHTS -->
-          <a class="list-group-item list-group-item-action" id="{{pl.id}}{{pl.name}}" data-toggle="list" href="#list-home" role="tab" aria-controls="home" (click)="getLightsData(pl.id)">
+          <a class="list-group-item list-group-item-action" id="{{pl.id}}{{pl.name}}" data-toggle="list" href="javascript:void(0)" role="tab" aria-controls="home" (click)="getLightsData(pl.id); hideLightInfo();">
             {{pl.name}}
             <span class="pull-right">
-              <a class="btn btn-xs btn-default" data-toggle="collapse" [attr.data-target]="'#co' + pl.id" data-parent="#list-tab">
+              <span class="btn btn-xs btn-default" data-toggle="collapse" [attr.data-target]="'#co' + pl.id" data-parent="#list-tab">
                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-              </a>
+              </span>
               <!-- Boton para ELIMINAR un PLACE -->
               <span class="pull-right">
                 <span class="btn btn-xs btn-default" (click)="deletePlaceCom( pl.id );">
@@ -89,7 +89,7 @@
                   <!-- Lista de LIGHTS -->
                   <div *ngFor="let li of lights">
                     <!-- desde el método llamado aquí se hace visible LIGHT INFORMATION -->
-                    <a class="list-group-item list-group-item-action" id="{{li.id}}{{li.name}}" data-toggle="list" href="#list-home" role="tab" aria-controls="home" (click)="status = li.status; lightActionSwag( li.id )">
+                    <a class="list-group-item list-group-item-action" id="{{li.id}}{{li.name}}" data-toggle="list" href="#list-home" role="tab" aria-controls="home" (click)="status = li.status; lightActionSwag( li.id ); consumption=li.consumption;">
                       {{ li.name }}
                       <span class="pull-right">
                         <span class="btn btn-xs btn-default" data-toggle="collapse" [attr.data-target]="'#co1' + li.id" data-parent="#list-tab1">
@@ -103,10 +103,10 @@
                       </span>
                       <span class="btn btn-xs btn-default pull-right" style="height: 23px; width: 25px; margin-top: 1px; padding: 0px 4px 5px 3px;" (click)="getLightLogsData(li.id)">
                         <div *ngIf="li.status; else notlit">
-                          <img src="http://findicons.com/files/icons/1681/siena/16/bulb_yellow.png" alt="litaf">
+                          <img src="assets/icons/bulb_yellow.png" alt="litaf">
                         </div>
                         <ng-template #notlit>
-                          <img src="http://findicons.com/files/icons/1681/siena/16/bulb.png" alt="nolit">
+                          <img src="assets/icons/bulb.png" alt="nolit">
                         </ng-template>
                       </span>
                     </a>
