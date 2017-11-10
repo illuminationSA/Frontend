@@ -24,6 +24,49 @@ export class PlacesComponent implements OnInit {
   consumption: string;
   totalConsumption: string;
   graphData = [];
+  datos = [];
+
+  // graph stuff
+  inidata:Array<any> =  new Array(288);
+
+  public lineChartData:Array<any> = [
+    {data: this.inidata, label: 'Series A'}
+  ];
+
+  public lineChartLabels:Array<string> = new Array(288);
+
+  public lineChartOptions:any = {
+    responsive: true
+  };
+  public lineChartColors:Array<any> = [
+    { // grey
+      backgroundColor: 'rgba(137,149,169,0.7)',
+      borderWidth: 0.01,
+      borderColor: 'rgba(148,159,177,1)',
+      pointRadius: 0,
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    }
+    // { // dark grey
+    //   backgroundColor: 'rgba(77,83,96,0.2)',
+    //   borderColor: 'rgba(77,83,96,1)',
+    //   pointBackgroundColor: 'rgba(77,83,96,1)',
+    //   pointBorderColor: '#fff',
+    //   pointHoverBackgroundColor: '#fff',
+    //   pointHoverBorderColor: 'rgba(77,83,96,1)'
+    // },
+    // { // grey
+    //   backgroundColor: 'rgba(148,159,177,0.2)',
+    //   borderColor: 'rgba(148,159,177,1)',
+    //   pointBackgroundColor: 'rgba(148,159,177,1)',
+    //   pointBorderColor: '#fff',
+    //   pointHoverBackgroundColor: '#fff',
+    //   pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    // }
+  ];
+  public lineChartLegend:boolean = true;
+  public lineChartType:string = 'line';
+
 
   constructor(
     private placesService: PlacesService,
@@ -33,6 +76,16 @@ export class PlacesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    var teim = new Date();
+    teim.setHours(0,0,0,0);
+    for( var i = 0; i < 288; i++ ){
+      if( teim.getMinutes() == 0 && teim.getSeconds() == 0){
+        console.log( String(teim.getMinutes) )
+      }
+      this.lineChartLabels[i] = String(teim.getHours()) + ":" + String(teim.getMinutes()) + ":" + String(teim.getSeconds());
+      teim = new Date( teim.getTime() + 5*60000 );
+    }
+    // console.log
     //console.log(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = localStorage.getItem('currentUser');
     if(this.currentUser == null){
@@ -168,9 +221,28 @@ export class PlacesComponent implements OnInit {
 
   getGraphLightData(){
     this.placesService.getGraphData( this.currentLight ).subscribe(
-      res => { this.graphData = res;
-      console.log(res); } )
+      (res => { this.graphData = res;
+        let dat = new Array<number>(288);
+        var cap = new Array<any>(288);
+        for(var punto = 0; punto < res.length; punto++){
+          // dat.push( parseFloat(res[punto].data) );
+          dat[punto] = res[punto].data;
+          cap[punto] = res[punto].caption;
+        }
+        this.lineChartData = [{data: dat, label: 'Consumption'}];
+        this.lineChartLabels = cap;
+        console.log(this.lineChartData)
+        console.log(this.lineChartLabels);
+      } ) )
   }
+
+  // graphThisOne(){
+  //   var datos = [];
+  //   for(var punto in this.graphData ){
+  //     datos.push( punto.data );
+  //   }
+  //   console.log( datos );
+  // }
 
   showLightLog(reslightlogs){
     this.count = 0;

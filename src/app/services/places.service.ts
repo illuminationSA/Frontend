@@ -105,7 +105,7 @@ export class PlacesService {
     .map((response: Response) => response.json());
   }
   getGraphData( light_id ){
-    return this.http.get( this.url+'light/'+light_id+'data' )
+    return this.http.get( this.url+'lights/'+light_id+'/data' )
     .map( (response: Response) => response.json() );
   }
 }
