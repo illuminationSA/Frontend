@@ -22,6 +22,7 @@ export class PlacesComponent implements OnInit {
   state: boolean;
   event_value: string = "off";
   consumption: string;
+  totalConsumption: string;
 
   constructor(
     private placesService: PlacesService,
@@ -179,5 +180,10 @@ export class PlacesComponent implements OnInit {
   lightActionSwag( id ){
     document.getElementById('light-info').style.visibility = "visible";
     this.currentLight = id;
+  }
+
+  getTotalConsumption(user_id){
+    this.placesService.getTotalConsumption( user_id )
+    .subscribe( res => this.totalConsumption = res );
   }
 }

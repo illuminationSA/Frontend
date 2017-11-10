@@ -7,6 +7,8 @@ import 'rxjs/add/operator/do';
 @Injectable()
 export class RegisterService {
 
+  url = 'http://localhost:3000/';
+
   constructor(private http: Http) { }
 
   submitData(name, email, password){
@@ -15,25 +17,25 @@ export class RegisterService {
     let options = new RequestOptions({ headers: headers });
 
     return this.http
-    .post('http://localhost:3000/users', body, options)
+    .post(this.url+'users', body, options)
     .map((response: Response ) => {console.log(response.json())
     response.json();
     })
   }
 
   getUser(){
-    return this.http.get('http://localhost:3000/users/1')
+    return this.http.get(this.url+'users/1')
     .map((response:Response) => response.json());
   }
 
   getUsers(){
-    return this.http.get('http://localhost:3000/users')
+    return this.http.get(this.url+'users')
     .map((response:Response) => response.json())
   }
 
   getLightLogs(light_id){
     return this.http
-    .get('http://localhost:3000/lights/'+light_id+'/light_logs')
+    .get(this.url+'lights/'+light_id+'/light_logs')
     .map((response:Response) => response.json())
     //.do(light => console.log(light));
   }
@@ -43,7 +45,7 @@ export class RegisterService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.post('http://localhost:3000/login.json', body, options)
+    return this.http.post(this.url+'login.json', body, options)
     .map((response: Response ) => response.json());
   }
 
@@ -51,7 +53,7 @@ export class RegisterService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.delete('http://localhost:3000/logout.json')
+    return this.http.delete(this.url+'logout.json')
     .map((response: Response) => {console.log(response.json());})
   }
 

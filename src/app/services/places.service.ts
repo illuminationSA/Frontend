@@ -6,6 +6,8 @@ import 'rxjs/add/operator/map'
 @Injectable()
 export class PlacesService {
 
+  url = 'http://localhost:3000/';
+
   constructor( private http: Http ) { }
 
   submitData(place_name, place_id ){
@@ -13,7 +15,8 @@ export class PlacesService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.put('http://localhost:3000/places/'+place_id, body, options)
+
+    return this.http.put(this.url + 'places/' + place_id, body, options)
       .map((response: Response) => { console.log(response.json());
     })
   }
@@ -23,7 +26,7 @@ export class PlacesService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.put('http://localhost:3000/lights/'+light_id, body, options)
+    return this.http.put(this.url+'lights/'+light_id, body, options)
       .map((response: Response) => { console.log(response.json());
     })
   }
@@ -33,7 +36,7 @@ export class PlacesService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.post('http://localhost:3000/places/', body, options)
+    return this.http.post(this.url+'places/', body, options)
     .map((response: Response) => {console.log(response.json());})
   }
 
@@ -42,7 +45,7 @@ export class PlacesService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.post('http://localhost:3000/lights/', body, options)
+    return this.http.post(this.url+'lights/', body, options)
     .map((response: Response) => {console.log(response.json());})
   }
 
@@ -51,7 +54,7 @@ export class PlacesService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.post('http://localhost:3000/light_logs/', body, options)
+    return this.http.post(this.url+'light_logs/', body, options)
     .map((response: Response) => {console.log(response.json());})
   }
 
@@ -59,7 +62,7 @@ export class PlacesService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.delete('http://localhost:3000/places/'+place_id, options)
+    return this.http.delete(this.url+'places/'+place_id, options)
     .map((response: Response) => {console.log(response.json());})
   }
 
@@ -67,22 +70,22 @@ export class PlacesService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.delete('http://localhost:3000/lights/'+light_id, options)
+    return this.http.delete(this.url+'lights/'+light_id, options)
     .map((response: Response) => {console.log(response.json());})
   }
 
   getPlaces( user_id ){
-    return this.http.get('http://localhost:3000/users/'+user_id+'/places')
+    return this.http.get(this.url+'users/'+user_id+'/places')
     .map((response: Response) => response.json());
   }
 
   getLights( place_id ){
-    return this.http.get('http://localhost:3000/places/'+place_id+'/lights')
+    return this.http.get(this.url+'places/'+place_id+'/lights')
     .map((response: Response) => response.json());
   }
 
   getLightLogs( light_id ){
-    return this.http.get('http://localhost:3000/lights/'+light_id+'/light_logs')
+    return this.http.get(this.url+'lights/'+light_id+'/light_logs')
     .map((response: Response) => response.json());
   }
 
@@ -92,8 +95,12 @@ export class PlacesService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.put('http://localhost:3000/lights/'+light_id, body, options)
+    return this.http.put(this.url+'lights/'+light_id, body, options)
       .map( (response: Response) => { console.log(response.json() );
     })
+  }
+  getTotalConsumption( user_id ){
+    return this.http.get(this.url+'users/'+ user_id +'/total_consumption')
+    .map((response: Response) => response.json());
   }
 }
