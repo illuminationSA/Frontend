@@ -23,6 +23,7 @@ export class PlacesComponent implements OnInit {
   event_value: string = "off";
   consumption: string;
   totalConsumption: string;
+  graphData = [];
 
   constructor(
     private placesService: PlacesService,
@@ -163,6 +164,12 @@ export class PlacesComponent implements OnInit {
     console.log( "evento: " + event + " light_id " + this.currentLight );
     this.placesService.updateLightStatus( event, this.currentLight ).subscribe(
       res => this.getLightsData( this.currentPlace ) );
+  }
+
+  getGraphLightData(){
+    this.placesService.getGraphData( this.currentLight ).subscribe(
+      res => { this.graphData = res;
+      console.log(res); } )
   }
 
   showLightLog(reslightlogs){
