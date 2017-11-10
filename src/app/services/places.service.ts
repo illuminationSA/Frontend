@@ -99,8 +99,13 @@ export class PlacesService {
       .map( (response: Response) => { console.log(response.json() );
     })
   }
+
   getTotalConsumption( user_id ){
     return this.http.get(this.url+'users/'+ user_id +'/total_consumption')
     .map((response: Response) => response.json());
+  }
+  getGraphData( light_id ){
+    return this.http.get( this.url+'lights/'+light_id+'/data' )
+    .map( (response: Response) => response.json() );
   }
 }

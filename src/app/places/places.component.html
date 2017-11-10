@@ -191,12 +191,29 @@
             <h4><strong>Total consumption per day</strong></h4>
             <p class="text-primary"> {{totalConsumption}}</p>
           </div>
+          <div class="col-md-9">
+            <div id="graph_div">
+              <div style="display: block;">
+                <canvas baseChart width="400" height="400"
+                [datasets]="lineChartData"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [colors]="lineChartColors"
+                [legend]="lineChartLegend"
+                [chartType]="lineChartType"></canvas>
+            </div>
+          </div>
+          <a (click)="getGraphLightData();" type="submit" class="btn btn-sm btn-primary">
+            <!-- <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> -->
+            Show me your stuff
+          </a>
         </div>
       </div>
     </div>
-    <!--
-    <div class="col-6"> <pre> {{ places | json }} </pre> </div>
-    <div class="col-6"> <pre> {{ lights | json }} </pre> </div>
-    <div class="col-6"> <pre> {{ lightlogs[count] | json }} </pre> </div> -->
   </div>
+  <!--
+  <div class="col-6"> <pre> {{ places | json }} </pre> </div>
+  <div class="col-6"> <pre> {{ lights | json }} </pre> </div>
+  <div class="col-6"> <pre> {{ lightlogs[count] | json }} </pre> </div> -->
+</div>
 </div>
