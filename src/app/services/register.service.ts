@@ -7,7 +7,7 @@ import 'rxjs/add/operator/do';
 @Injectable()
 export class RegisterService {
 
-  url = 'http://192.168.0.30:3000/';
+  url = 'http://localhost:3000/';
 
   constructor(private http: Http) { }
 

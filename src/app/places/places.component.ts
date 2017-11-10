@@ -59,6 +59,10 @@ export class PlacesComponent implements OnInit {
     document.getElementById("light-info").style.visibility = "hidden";
   }
 
+  showLightInfo( ){
+    document.getElementById("light-info").style.visibility = "visible";
+  }
+
   getLightLogsData( light_id ){
     this.placesService.getLightLogs(light_id).subscribe(
       ( llogs => {
@@ -182,8 +186,8 @@ export class PlacesComponent implements OnInit {
     this.currentLight = id;
   }
 
-  getTotalConsumption(user_id){
-    this.placesService.getTotalConsumption( user_id )
+  getTotalConsumption(){
+    this.placesService.getTotalConsumption( this.currentUser )
     .subscribe( res => this.totalConsumption = res );
   }
 }
