@@ -187,7 +187,7 @@
             <p class="text-primary"> {{consumption}}</p>
             <h4><strong>Total consumption per day</strong></h4>
             <p class="text-primary"> {{totalConsumption}}</p>
-            <a (click)="getTotalConsumption();" type="submit" class="btn btn-sm btn-primary">
+            <a (click)="getTotalConsumption(); getLightConsumption()" type="submit" class="btn btn-sm btn-primary">
               <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
             </a>
           </div>

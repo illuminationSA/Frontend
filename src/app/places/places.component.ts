@@ -205,9 +205,9 @@ export class PlacesComponent implements OnInit {
       } )
   }
 
-  delay( ms ){
-    return new Promise( resolve => setTimeout(resolve, ms) );
-  }
+  // delay( ms ){
+  //   return new Promise( resolve => setTimeout(resolve, ms) );
+  // }
 
   getLightLogs(id) {
     document.getElementById('light-info').style.visibility = "visible";
@@ -272,6 +272,12 @@ export class PlacesComponent implements OnInit {
   getTotalConsumption(){
     this.placesService.getTotalConsumption( this.currentUser )
     .subscribe( res => this.totalConsumption = res );
+    console.log( this.totalConsumption );
+  }
+
+  getLightConsumption(){
+    this.placesService.getLightConsumption( this.currentLight )
+    .subscribe( res => this.consumption = res.consumption );
     console.log( this.totalConsumption );
   }
 }

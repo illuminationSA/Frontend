@@ -6,7 +6,8 @@ import 'rxjs/add/operator/map'
 @Injectable()
 export class PlacesService {
 
-  url = 'http://192.168.0.30:3000/';
+  // url = 'http://192.168.0.30:3000'
+  url = 'http://localhost:3000/'
 
   constructor( private http: Http ) { }
 
@@ -104,6 +105,11 @@ export class PlacesService {
     return this.http.get(this.url+'users/'+ user_id +'/total_consumption')
     .map((response: Response) => response.json());
   }
+  getLightConsumption( light_id ){
+    return this.http.get(this.url+'lights/'+ light_id)
+    .map((response: Response) => response.json());
+  }
+
   getGraphData( light_id ){
     return this.http.get( this.url+'lights/'+light_id+'/data' )
     .map( (response: Response) => response.json() );
