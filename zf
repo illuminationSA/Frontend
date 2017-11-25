@@ -11,7 +11,7 @@ elif [ $1 = "-l" ]; then # Run on localhost
   echo "Localhost option selected"
   sed -i -e 's/192.168.99.101:3000/localhost:3000/g' $rs_path
   sed -i -e 's/192.168.99.101:3000/localhost:3000/g' $ps_path
-  # ng s --host 10.203.139.159 --port 4200 #interoperability
+  ng s --host 168.176.25.25 --port 4200 #interoperability
   ng s # localhost
 elif [ $1 = "-d" ]; then # Run on docker
   echo "Docker option selected"

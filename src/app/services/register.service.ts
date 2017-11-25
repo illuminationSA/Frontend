@@ -7,10 +7,11 @@ import 'rxjs/add/operator/do';
 @Injectable()
 export class RegisterService {
 
-  //url = 'http://192.168.0.30:3000/'     // ip interoperabilidad
-  //url = 'http://10.203.139.159:3000/' // ip nacional
-  url = 'http://localhost:3001/'      // localhost
-  //url = 'http://localhost:3000/' // docker
+  //url = 'http://192.168.0.30:3001/'     // ip interoperabilidad
+  //url = 'http://168.176.25.25:3000/' // ip nacional
+  //url = 'http://localhost:3001/'      // localhost
+  //url = 'http://localhost:3000/' // docker 1
+  url = 'http://168.176.25.25:3000/' // docker 2
 
   constructor(private http: Http) { }
 
